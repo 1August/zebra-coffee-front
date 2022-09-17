@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 const productTypes = [
     {
-        type: "coffee",
+        type: 1,
         name: "Кофе",
     },
     {
-        type: "tea",
+        type: 2,
         name: "Чай",
     },
     {
@@ -30,14 +30,16 @@ const productTypes = [
 const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
     const [productsCount, setProductsCount] = useState({});
 
+    console.log(productsCount, productsFilter);
+
     useEffect(() => {
         const newProductsCount = {};
 
         products.forEach((el) => {
-            if (el.type in newProductsCount) {
-                newProductsCount[el.type]++;
+            if (el["category_id"] in newProductsCount) {
+                newProductsCount[el["category_id"]]++;
             } else {
-                newProductsCount[el.type] = 1;
+                newProductsCount[el["category_id"]] = 1;
             }
         });
 
@@ -51,7 +53,7 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
                 {productTypes.map((el) => (
                     <li
                         className={`products-nav-list__el ${
-                            productsFilter == el.type
+                            productsFilter === el.type
                                 ? "products-nav-list__el_active"
                                 : ""
                         }`}
@@ -62,7 +64,7 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
                         </div>
                         <div
                             className={`products-nav-list__el_count ${
-                                productsFilter == el.type
+                                productsFilter === el.type
                                     ? "products-nav-list__el_active"
                                     : ""
                             }`}

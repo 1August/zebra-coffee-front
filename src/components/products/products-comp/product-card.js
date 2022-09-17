@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Button } from "../../../UI/Button/Button";
+
 const ProductCard = ({ img, name, description, price }) => {
     return (
         <div className="product-card">
@@ -15,8 +17,13 @@ const ProductCard = ({ img, name, description, price }) => {
 
                 <div className="product-card-description">{description}</div>
                 <div className="product-card-count">
-                    <input type="number" min="0" max="20" value="0" />
+                    <input type="number" min="0" max="20" />
                 </div>
+            </div>
+            <div className="product-card-button__container">
+                <Button className="product-card-button">
+                    Положить в корзину
+                </Button>
             </div>
         </div>
     );
