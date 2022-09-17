@@ -1,26 +1,25 @@
-import './App.css'
-import {Header} from "./components/Header/Header";
-import {MyRoutes} from "./components/MyRoutes/MyRoutes";
-import {useDispatch} from "react-redux";
-import {setCredentialsAction} from "./redux/authReducer";
-import {Modal} from "./components/Modal/Modal";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-    const dispatch = useDispatch()
-
-    const localSavedUser = JSON.parse(localStorage.getItem('user')) || {}
-    if (Object.values(localSavedUser).length > 0) dispatch(setCredentialsAction(localSavedUser))
-
-    return (
-        <div className="App">
-            <Modal/>
-
-            <Header/>
-            <main>
-                <MyRoutes/>
-            </main>
-        </div>
-    )
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
-export default App
+export default App;
