@@ -7,6 +7,7 @@ import {SignInPage} from "../../pages/SignInPage/SignInPage";
 import Products from "../products/products";
 import {RequireAuth} from "../RequireAuth/RequireAuth";
 import {ErrorPage} from "../../pages/ErrorPage/ErrorPage";
+import {CartPage} from "../../pages/CartPage/CartPage";
 
 export const MyRoutes = () => {
     const routes = [
@@ -18,7 +19,7 @@ export const MyRoutes = () => {
         },
         {
             path: "/cart",
-            component: <MainPage/>,
+            component: <CartPage/>,
             requireAuth: true,
             reverse: false
         },

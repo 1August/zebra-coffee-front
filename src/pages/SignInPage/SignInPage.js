@@ -1,10 +1,9 @@
 import './SignInPage.scss'
 import {useState} from "react";
-import {setCredentialsAction} from "../../redux/authReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../../UI/Button/Button";
 import {NavLink, useNavigate} from "react-router-dom";
-import {signUp, signIn} from "../../redux/asyncActions/fetchUsers";
+import {signIn} from "../../redux/asyncActions/fetchUsers";
 
 export const SignInPage = () => {
     const dispatch = useDispatch()
@@ -12,9 +11,7 @@ export const SignInPage = () => {
     const nav = useNavigate()
 
     const token = useSelector(state => state.auth.token)
-    if (token){
-        nav('/products')
-    }
+    if (token) nav('/products')
 
     const inputs = [
         {

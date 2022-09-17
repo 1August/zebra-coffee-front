@@ -1,36 +1,51 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 
 import axios from "axios";
 
 import ProductsNav from "./products-comp/products-nav";
-import ProductsContainer from "./products-comp/products-container";
 import ProductCard from "./products-comp/product-card";
 import ProductPrice from "./products-comp/product-price";
 
-// import products from "./data";
 
 import "./products-sass/products.sass";
 
 const Products = () => {
+    /**
+     *       "id": 2,
+     *       "name": "Лавандовый раф 360 мл",
+     *       "category_id": 1,
+     *       "price": "950",
+     *       "cost_price": "665",
+     *       "image": "https://cachizer1.2gis.com/market/5e3a84f2-57fb-4b8b-abf0-93cfd0841c63.png?w=1088",
+     *       "description": "Lorem ipsum"
+     */
     const [products, setProducts] = useState(null);
     const [productsFilter, setProductsFilter] = useState(0);
 
-    const [leftPrice, setLeftPrice] = useState(0);
-    const [rightPrice, setRightPrice] = useState(0);
+    const [price, setPrice] = useState({
+        left: 0,
+        right: 0
+    })
+
+    const [tempCart, setTempCart] = useState([])
+
+    const handleTempCartAdd = (product, productNumber) => {
+        tempCart.length <= 0 ?
+            setTempCart([{...product, productNumber}]) :
+            setTempCart([...tempCart, {...product, productNumber}])
+
+        const prevCart = JSON.parse(localStorage.getItem('cart')) || []
+
+        localStorage.setItem('cart', JSON.stringify([
+            ...prevCart, {...product, productNumber}
+        ]))
+    }
 
     const [maxPrice, setMaxPrice] = useState(0);
 
     useEffect(() => {
         const getProducts = async () => {
-            const result = await axios.get(
-                "https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15",
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                }
-            );
+            const result = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15");
             setProducts(result.data.results);
         };
         getProducts();
@@ -38,12 +53,9 @@ const Products = () => {
 
     useEffect(() => {
         if (products) {
-            let tempMax = -1;
-            products.forEach(
-                (el) => (tempMax = el.price > tempMax && el.price)
-            );
+            const tempMax = products.reduce((max, el) => (el.price > max && el.price), 0)
             setMaxPrice(tempMax);
-            setRightPrice(tempMax);
+            setPrice({...price, right: tempMax})
         }
     }, [products]);
 
@@ -53,7 +65,7 @@ const Products = () => {
 
     return (
         <div className="product">
-            <div class="container">
+            <div className="container">
                 <div className="product-main">
                     <div className="product-main-left">
                         <ProductsNav
@@ -63,58 +75,26 @@ const Products = () => {
                         />
                         <ProductPrice
                             max={maxPrice}
-                            setRightPrice={setRightPrice}
-                            setLeftPrice={setLeftPrice}
+                            price={price}
+                            setPrice={setPrice}
                         />
                     </div>
 
                     <div className="product-main-right">
-                        {productsFilter ? (
-                            <div class="products-lists">
-                                <div class="product-lists-container">
-                                    {products
-                                        .filter(
-                                            (el) =>
-                                                el["category_id"] ==
-                                                productsFilter
-                                        )
-                                        .filter(
-                                            (el) =>
-                                                el.price >= leftPrice &&
-                                                el.price <= parseInt(rightPrice)
-                                        )
-                                        .map((el) => (
-                                            <ProductCard
-                                                img={el.image}
-                                                name={el.name}
-                                                description={el.description}
-                                                price={el.price}
-                                            />
-                                        ))}
-                                </div>
+                        <div className="products-lists">
+                            <h2>{'Кофе или Популярные'}</h2>
+                            <div className="product-lists-container">
+                                {
+                                    products
+                                        .filter(el => el.price >= +price.left && el.price <= +price.right)
+                                        .map((el) => <ProductCard
+                                            key={el.id}
+                                            el={el}
+                                            handleTempCartAdd={handleTempCartAdd}
+                                        />)
+                                }
                             </div>
-                        ) : (
-                            <div class="products-lists">
-                                <h2>Кофе</h2>
-                                <div class="product-lists-container">
-                                    {products
-                                        .filter((el) => el["category_id"] == 1)
-                                        .filter(
-                                            (el) =>
-                                                el.price >= leftPrice &&
-                                                el.price <= parseInt(rightPrice)
-                                        )
-                                        .map((el) => (
-                                            <ProductCard
-                                                img={el.image}
-                                                name={el.name}
-                                                description={el.description}
-                                                price={el.price}
-                                            />
-                                        ))}
-                                </div>
-                            </div>
-                        )}
+                        </div>
                     </div>
                 </div>
             </div>

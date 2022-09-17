@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 
-const ProductPrice = ({ max, setRightPrice, setLeftPrice }) => {
+const ProductPrice = ({max, price, setPrice}) => {
     const [minValue, setMinValue] = useState(0);
     const [maxValue, setMaxValue] = useState(max);
 
-    const handleInput = (e) => {
+    const handleInput = e => {
         setMinValue(e.minValue);
-        setLeftPrice(e.minValue);
-        setRightPrice(e.maxValue);
+        setPrice({...price, left: e.minValue, right: e.maxValue})
+        // setLeftPrice(e.minValue);
+        // setRightPrice(e.maxValue);
         setMaxValue(e.maxValue);
     };
 
     useEffect(() => {
-        setLeftPrice(minValue);
+        setPrice({...price, left: minValue})
+        // setLeftPrice(minValue);
         setMaxValue(maxValue);
-    });
+    }, []);
 
-    useEffect(() => {
-        setMaxValue(max);
-    }, [max]);
+    useEffect(() => setMaxValue(max), [max]);
 
     return (
         <div className="product-price">
@@ -36,9 +36,7 @@ const ProductPrice = ({ max, setRightPrice, setLeftPrice }) => {
                 preventWheel={false}
                 minValue={minValue}
                 maxValue={maxValue}
-                onInput={(e) => {
-                    handleInput(e);
-                }}
+                onInput={handleInput}
             />
         </div>
     );

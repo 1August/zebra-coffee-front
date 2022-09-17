@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 
 const productTypes = [
     {
@@ -27,10 +27,8 @@ const productTypes = [
     },
 ];
 
-const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
+const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
     const [productsCount, setProductsCount] = useState({});
-
-    console.log(productsCount, productsFilter);
 
     useEffect(() => {
         const newProductsCount = {};
@@ -50,8 +48,9 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
         <div className="products-nav">
             <h2 className="products-nav-header">Категории</h2>
             <ul className="products-nav-list">
-                {productTypes.map((el) => (
+                {productTypes.map(el => (
                     <li
+                        key={el.name}
                         className={`products-nav-list__el ${
                             productsFilter === el.type
                                 ? "products-nav-list__el_active"
