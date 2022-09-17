@@ -2,6 +2,7 @@ import './SignUpPage.scss'
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {fetchUser} from "../../redux/asyncActions/fetchUsers";
+import {Button} from "../../UI/Button/Button";
 
 
 export const SignUpPage = () => {
@@ -105,7 +106,12 @@ export const SignUpPage = () => {
                                 </div>
                             ))
                         }
-                        <button type="submit">Sign Up</button>
+
+                        <Button
+                            type="submit"
+                        >
+                            Sign Up
+                        </Button>
                     </form>
                 </div>
             </div>

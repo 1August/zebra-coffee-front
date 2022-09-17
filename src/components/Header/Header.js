@@ -12,12 +12,12 @@ const links = [
         to: "/profile",
     },
     {
-        label: "Link3",
+        label: "Products",
         to: "/products",
     },
     {
-        label: "Link4",
-        to: "/signIn",
+        label: "SignUp",
+        to: "/signUp",
     },
 ];
 
