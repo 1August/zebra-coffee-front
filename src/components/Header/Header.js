@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
-import temp from '../../assets/img/logo.png'
+import logo from '../../assets/img/zebraCoffee.png'
 
 const links = [
     {
@@ -28,7 +28,7 @@ export const Header = () => {
     return (
         <header className="header" id="header">
             <div className="container">
-                <div className="header-logo"><NavLink to="/"><img src={temp} alt="Zebra Coffee"/></NavLink></div>
+                <div className="header-logo"><NavLink to="/"><img src={logo} alt="Zebra Coffee"/></NavLink></div>
                 <div className="header-links">
                     <ul>
                         {
