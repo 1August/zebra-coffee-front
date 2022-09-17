@@ -1,0 +1,61 @@
+.product-card
+    padding: 1.5rem
+    background-color: #fff
+
+    max-width: 16rem
+
+    border-radius: 0.75rem
+
+    &-img
+        width: 10rem
+        aspect-ratio: 3/4
+
+        object-fit: cover
+        object-position: center
+
+        margin-bottom: 1.6rem
+
+        &__container
+            display: flex
+            justify-content: center
+
+    &-info
+
+        &-container
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+            margin-bottom: 0.5rem
+
+            min-height: 3rem
+
+    &-name, &-price
+        font-weight: 700
+        font-size: 1rem
+
+        color: #000000
+
+    &-name
+        margin-right: 1rem
+
+    &-description
+        font-weight: 400
+        font-size: 0.875rem
+
+        display: -webkit-box
+        -webkit-line-clamp: 3
+        -webkit-box-orient: vertical
+        overflow: hidden
+
+        color: #666666
+
+        margin-bottom: 1rem
+
+    &-count input
+        outline: none
+        border: 1px solid rgba(0, 0, 0, .5)
+        border-radius: 10px
+        text-align: center
+        width: 100%
+        padding: 0.5rem
