@@ -9,7 +9,6 @@ function App() {
             <main>
                 <MyRoutes/>
             </main>
-
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import './Header.css'
 import {NavLink} from 'react-router-dom'
 
+import { ShoppingCart } from '@mui/icons-material'
+
 import temp from '../../assets/img/logo.png'
 
 const links = [
@@ -31,7 +33,7 @@ export const Header = () => {
                     <ul>
                         {
                             links.length > 0 ? links.map(el => (
-                                <li>
+                                <li key={el.label}>
                                     <NavLink
                                         className={({isActive}) => isActive ? 'active' : ''}
                                         to={el.to}
@@ -41,6 +43,20 @@ export const Header = () => {
                                 </li>
                             )) : <h1>NotFound</h1>
                         }
+                    </ul>
+                </div>
+                <div className="header-account">
+                    <ul>
+                        <li>
+                            <NavLink to="/cart">
+                                <ShoppingCart/>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/account">
+                                <img src={'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80'} alt="Account"/>
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -25,7 +25,7 @@ export const MyRoutes = () => {
         <Routes>
             {
                 routes.length > 0 && routes.map(el => (
-                    <Route path={el.path} element={el.component}/>
+                    <Route key={el.path} path={el.path} element={el.component}/>
                 ))
             }
         </Routes>
