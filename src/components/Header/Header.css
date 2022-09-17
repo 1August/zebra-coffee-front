@@ -20,9 +20,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    text-decoration: none;
+    color: #000;
 }
 
-.header-logo img {
+.header-logo :is(svg, img) {
     width: 128px;
 }
 
