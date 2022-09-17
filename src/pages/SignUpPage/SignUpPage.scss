@@ -1,5 +1,5 @@
 .signUpPage {
-  //height: 100vh;
+  height: 100vh;
   padding: 0;
 
   //.goHomeBtn{
@@ -44,7 +44,6 @@
 
     .signUpContent {
       width: 50%;
-      padding: 2rem 0;
 
       display: flex;
       align-items: center;
@@ -62,6 +61,23 @@
       padding: 2rem;
       box-shadow: .5rem .5rem 20px 7px rgba(0, 0, 0, .15);
       //border: 1px solid #000;
+
+      input {
+        padding: 1rem;
+        border: none;
+        outline: none;
+      }
+
+      button {
+        cursor: pointer;
+
+        padding: 1rem;
+        margin-top: 1rem;
+        background-color: rgba(var(--main-teal-green), 1);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+      }
 
       & > * {
         display: grid;

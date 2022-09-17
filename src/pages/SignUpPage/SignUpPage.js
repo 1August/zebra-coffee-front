@@ -1,39 +1,30 @@
 import './SignUpPage.scss'
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {signUp} from "../../redux/asyncActions/fetchUsers";
-import {Button} from "../../UI/Button/Button";
+import {fetchUser} from "../../redux/asyncActions/fetchUsers";
 
-import initialPhoto from '../../assets/img/initialPhoto.png'
 
 export const SignUpPage = () => {
     const dispatch = useDispatch()
 
     const inputs = [
         {
-            name: 'username',
-            id: 'username',
-            placeholder: 'Username',
+            name: 'name',
+            id: 'name',
+            placeholder: 'Name',
             type: 'text',
             required: true
         },
         {
-            name: 'firstName',
-            id: 'firstName',
-            placeholder: 'First name',
+            name: 'surname',
+            id: 'surname',
+            placeholder: 'Surname',
             type: 'text',
             required: true
         },
         {
-            name: 'lastName',
-            id: 'lastName',
-            placeholder: 'Last name',
-            type: 'text',
-            required: true
-        },
-        {
-            name: 'phoneNumber',
-            id: 'phoneNumber',
+            name: 'number',
+            id: 'number',
             placeholder: 'Phone number',
             type: 'tel',
             required: true
@@ -62,15 +53,12 @@ export const SignUpPage = () => {
     ]
 
     const [info, setInfo] = useState({
-        username: '',
-        firstName: '',
-        lastName: '',
-        locationId: 5,
-        phoneNumber: '+',
+        name: '',
+        surname: '',
         email: '',
         password: '',
-        repeatPassword: '',
-        image: initialPhoto
+        number: '+',
+        repeatPassword: ''
     })
 
     const handleInputChange = e => {
@@ -85,7 +73,8 @@ export const SignUpPage = () => {
         }
 
         const {repeatPassword: _, ...payload} = {...info}
-        dispatch(signUp(payload))
+        console.log(payload)
+        // dispatch(fetchUser(payload))
     }
 
     return(
@@ -116,12 +105,7 @@ export const SignUpPage = () => {
                                 </div>
                             ))
                         }
-
-                        <Button
-                            type="submit"
-                        >
-                            Sign Up
-                        </Button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>
