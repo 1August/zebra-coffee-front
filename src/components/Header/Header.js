@@ -1,14 +1,15 @@
-import './Header.css'
+import './Header.scss'
 import {NavLink} from 'react-router-dom'
 
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 import logo from '../../assets/img/zebraCoffee.png'
+import {useSelector} from "react-redux";
 
 const links = [
     {
-        label: 'Link2',
-        to: '/products'
+        label: 'Profile',
+        to: '/profile'
     },
     {
         label: 'Link3',
@@ -21,6 +22,9 @@ const links = [
 ]
 
 export const Header = () => {
+    const { user } = useSelector(state => state.auth)
+
+
     return (
         <header className="header" id="header">
             <div className="container">
@@ -49,9 +53,13 @@ export const Header = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/account">
-                                <img src={'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80'} alt="Account"/>
-                            </NavLink>
+                            {
+                                user ? <NavLink to="/account">
+                                    <img src={'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80'} alt="Account"/>
+                                </NavLink> : <NavLink to={'/signIn'}>
+                                    Sign In
+                                </NavLink>
+                            }
                         </li>
                     </ul>
                 </div>

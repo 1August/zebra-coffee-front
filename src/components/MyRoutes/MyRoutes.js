@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import { MainPage } from "../../pages/MainPage/MainPage";
 import Userpage from "../userpage/userpage";
+import {ProfilePage} from "../../pages/ProfilePage/ProfilePage";
 
 export const MyRoutes = () => {
     const routes = [
@@ -9,7 +10,7 @@ export const MyRoutes = () => {
             component: <MainPage />,
         },
         {
-            path: "/products",
+            path: "/cart",
             component: <MainPage />,
         },
         {
@@ -23,6 +24,10 @@ export const MyRoutes = () => {
         {
             path: "/account",
             component: <Userpage />,
+        },
+        {
+            path: "/profile",
+            component: <ProfilePage />,
         },
     ];
 
