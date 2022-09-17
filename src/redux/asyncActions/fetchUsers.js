@@ -2,6 +2,8 @@ import axios from "axios"
 import {addManyUsersAction, addUserAction} from "../usersReducer"
 import {setCredentialsAction} from "../authReducer"
 
+import {decodeToken} from 'react-jwt'
+
 export const fetchManyUsers = () =>
     dispatch =>
         axios.get('https://reqres.in/api/users?page=1')
@@ -74,5 +76,7 @@ export const signIn = payload =>
                  * TODO:
                  * Need to get __UserID__
                  */
-                dispatch(setCredentialsAction({user: {username: payload.username}, token: res.data.token}))
+
+                const {id: userId, role} = decodeToken(res.data.token)
+                dispatch(setCredentialsAction({user: {userId: userId, username: payload.username, role}, token: res.data.token}))
             })

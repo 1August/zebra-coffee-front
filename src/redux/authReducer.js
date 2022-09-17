@@ -9,9 +9,11 @@ const LOG_OUT = 'LOG_OUT'
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CREDENTIALS:
-            return {user: action.payload.user, token: action.payload.token}
+            localStorage.setItem('user', JSON.stringify(action?.payload))
+            const {token, ...user} = action?.payload
+            return {...user, token}
         case LOG_OUT:
-            // localStorage.removeItem('user')
+            localStorage.removeItem('user')
             return {user: null, token: null}
         default:
             return state
