@@ -7,10 +7,6 @@ import logo from '../../assets/img/zebraCoffee.png'
 
 const links = [
     {
-        label: 'Link1',
-        to: '/'
-    },
-    {
         label: 'Link2',
         to: '/products'
     },
