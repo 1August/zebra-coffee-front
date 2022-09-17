@@ -9,25 +9,31 @@ export const fetchManyUsers = () =>
 
 export const fetchUser = payload =>
     dispatch =>
-        axios.post('https://reqres.in/api/register', {
-            username: payload.email,
-            email: payload.email,
-            password: payload.password
+        axios.post('', {
+            ...payload
+        }).then(res => {
+            console.log({res, payload})
+            dispatch(res)
         })
-            .then(res => {
-                if (res.status !== 200) return
-                dispatch(addUserAction({...payload, id: res.data.id}))
-                dispatch(setCredentialsAction({user: {...payload, id: res.data.id}, token: res.data.token}))
-
-                const user = {
-                    id: res.data.id,
-                    email: payload.email,
-                    first_name: payload.first_name,
-                    last_name: payload.last_name,
-                    token: res.data.token
-                }
-                localStorage.setItem('user', JSON.stringify(user))
-            })
+        // axios.post('https://reqres.in/api/register', {
+        //     username: payload.email,
+        //     email: payload.email,
+        //     password: payload.password
+        // })
+        //     .then(res => {
+        //         if (res.status !== 200) return
+        //         dispatch(addUserAction({...payload, id: res.data.id}))
+        //         dispatch(setCredentialsAction({user: {...payload, id: res.data.id}, token: res.data.token}))
+        //
+        //         const user = {
+        //             id: res.data.id,
+        //             email: payload.email,
+        //             first_name: payload.first_name,
+        //             last_name: payload.last_name,
+        //             token: res.data.token
+        //         }
+        //         localStorage.setItem('user', JSON.stringify(user))
+        //     })
 
 export const login = payload =>
     dispatch =>

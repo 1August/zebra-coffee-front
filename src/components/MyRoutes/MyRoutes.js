@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router";
 import { MainPage } from "../../pages/MainPage/MainPage";
 import Userpage from "../userpage/userpage";
 import {ProfilePage} from "../../pages/ProfilePage/ProfilePage";
+import {SignUpPage} from "../../pages/SignUpPage/SignUpPage";
+import {SignInPage} from "../../pages/SignInPage/SignInPage";
 
 export const MyRoutes = () => {
     const routes = [
@@ -15,11 +17,11 @@ export const MyRoutes = () => {
         },
         {
             path: "/signUp",
-            component: <MainPage />,
+            component: <SignUpPage />,
         },
         {
             path: "/signIn",
-            component: <MainPage />,
+            component: <SignInPage />,
         },
         {
             path: "/account",

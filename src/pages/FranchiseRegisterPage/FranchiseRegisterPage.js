@@ -1,12 +1,32 @@
-import './SignInPage.scss'
-import {useState} from "react";
-import {setCredentialsAction} from "../../redux/authReducer";
+import './FranchiseRegisterPage.scss'
 import {useDispatch} from "react-redux";
+import {useState} from "react";
 
-export const SignInPage = () => {
+export const FranchiseRegisterPage = () => {
     const dispatch = useDispatch()
 
     const inputs = [
+        {
+            name: 'country',
+            id: 'country',
+            placeholder: 'Country',
+            type: 'text',
+            required: true
+        },
+        {
+            name: 'surname',
+            id: 'surname',
+            placeholder: 'Surname',
+            type: 'text',
+            required: true
+        },
+        {
+            name: 'number',
+            id: 'number',
+            placeholder: 'Phone number',
+            type: 'tel',
+            required: true
+        },
         {
             name: 'email',
             id: 'email',
@@ -20,37 +40,42 @@ export const SignInPage = () => {
             placeholder: 'Password',
             type: 'password',
             required: true
+        },
+        {
+            name: 'repeatPassword',
+            id: 'repeatPassword',
+            placeholder: 'Repeat password',
+            type: 'password',
+            required: true
         }
     ]
 
     const [info, setInfo] = useState({
-        email: '',
-        password: ''
+
     })
 
     const handleInputChange = e => {
-        setInfo({...info, [e.target.name]: e.target.value})
+        setInfo({})
     }
 
     const handleFormSubmit = e => {
         e.preventDefault()
 
-        const payload = {
-            user: {
-                ...info
-            }
-        }
-
-        dispatch(setCredentialsAction(payload))
+        // const {repeatPassword: _, ...payload} = {...info}
+        // console.log(payload)
+        // dispatch(fetchUser(payload))
     }
 
     return(
-        <div className="signInPage" id="signInPage">
+        <div className="franchiseRegisterPage" id="franchiseRegisterPage">
             <div className="container">
-                <div className="signInImg"></div>
-                <div className="signInContent">
+                <div className="franchiseRegisterImg"></div>
+                <div className="franchiseRegisterContent">
                     <h1>Sign Up</h1>
-                    <form className="signInForm">
+                    <form
+                        className="franchiseRegisterForm"
+                        onSubmit={handleFormSubmit}
+                    >
                         {
                             inputs.length > 0 && inputs.map(el => (
                                 <div key={el.id}>
@@ -69,7 +94,7 @@ export const SignInPage = () => {
                                 </div>
                             ))
                         }
-                        <button type="submit">Sign In</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>

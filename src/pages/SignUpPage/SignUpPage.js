@@ -1,12 +1,34 @@
-import './SignInPage.scss'
+import './SignUpPage.scss'
 import {useState} from "react";
-import {setCredentialsAction} from "../../redux/authReducer";
 import {useDispatch} from "react-redux";
+import {fetchUser} from "../../redux/asyncActions/fetchUsers";
 
-export const SignInPage = () => {
+
+export const SignUpPage = () => {
     const dispatch = useDispatch()
 
     const inputs = [
+        {
+            name: 'name',
+            id: 'name',
+            placeholder: 'Name',
+            type: 'text',
+            required: true
+        },
+        {
+            name: 'surname',
+            id: 'surname',
+            placeholder: 'Surname',
+            type: 'text',
+            required: true
+        },
+        {
+            name: 'number',
+            id: 'number',
+            placeholder: 'Phone number',
+            type: 'tel',
+            required: true
+        },
         {
             name: 'email',
             id: 'email',
@@ -20,12 +42,23 @@ export const SignInPage = () => {
             placeholder: 'Password',
             type: 'password',
             required: true
+        },
+        {
+            name: 'repeatPassword',
+            id: 'repeatPassword',
+            placeholder: 'Repeat password',
+            type: 'password',
+            required: true
         }
     ]
 
     const [info, setInfo] = useState({
+        name: '',
+        surname: '',
         email: '',
-        password: ''
+        password: '',
+        number: '+',
+        repeatPassword: ''
     })
 
     const handleInputChange = e => {
@@ -34,23 +67,26 @@ export const SignInPage = () => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
-
-        const payload = {
-            user: {
-                ...info
-            }
+        if (info.password !== info.repeatPassword){
+            setInfo({...info, repeatPassword: ''})
+            return
         }
 
-        dispatch(setCredentialsAction(payload))
+        const {repeatPassword: _, ...payload} = {...info}
+        console.log(payload)
+        // dispatch(fetchUser(payload))
     }
 
     return(
-        <div className="signInPage" id="signInPage">
+        <div className="signUpPage" id="signUpPage">
             <div className="container">
-                <div className="signInImg"></div>
-                <div className="signInContent">
+                <div className="signUpImg"></div>
+                <div className="signUpContent">
                     <h1>Sign Up</h1>
-                    <form className="signInForm">
+                    <form
+                        className="signUpForm"
+                        onSubmit={handleFormSubmit}
+                    >
                         {
                             inputs.length > 0 && inputs.map(el => (
                                 <div key={el.id}>
@@ -69,7 +105,7 @@ export const SignInPage = () => {
                                 </div>
                             ))
                         }
-                        <button type="submit">Sign In</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-.signInPage {
+.signUpPage {
   height: 100vh;
   padding: 0;
 
@@ -33,7 +33,7 @@
     align-items: stretch;
     justify-content: space-between;
 
-    .signInImg {
+    .signUpImg {
       width: 50%;
 
       background-image: url(../../assets/img/coffeBeans.jpg);
@@ -42,7 +42,7 @@
       background-size: cover;
     }
 
-    .signInContent {
+    .signUpContent {
       width: 50%;
 
       display: flex;
@@ -51,7 +51,7 @@
       flex-direction: column;
     }
 
-    .signInForm {
+    .signUpForm {
       width: 60%;
 
       display: grid;
