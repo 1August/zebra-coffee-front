@@ -9,6 +9,7 @@ img{
 }
 
 main{
+    padding: 3rem 0;
     background-color: rgba(var(--main-grey), 1);
 }
 

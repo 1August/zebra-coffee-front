@@ -1,6 +1,23 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--main-teal-green), .7);
+  transition: all .5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--main-teal-green), 1);
+}
+
 :root{
   --main-teal-green: 49, 151, 149;
-  --main-white: 0, 0, 0;
+  --main-white: 255, 255, 255;
   --main-grey: 237, 242, 247;
   --main-blue: 9, 58, 80;
 }
