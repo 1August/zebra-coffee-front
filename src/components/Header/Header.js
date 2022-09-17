@@ -1,4 +1,4 @@
-import './Header.scss'
+import './Header.css'
 import {NavLink} from 'react-router-dom'
 
 import temp from '../../assets/img/logo.png'
@@ -26,10 +26,9 @@ export const Header = () => {
     return (
         <header className="header" id="header">
             <div className="container">
-                <div className="header-logo"><NavLink to="#"><img src={temp} alt="Zebra Coffee"/></NavLink></div>
+                <div className="header-logo"><NavLink to="/"><img src={temp} alt="Zebra Coffee"/></NavLink></div>
                 <div className="header-links">
                     <ul>
-
                         {
                             links.length > 0 ? links.map(el => (
                                 <li>
@@ -42,10 +41,6 @@ export const Header = () => {
                                 </li>
                             )) : <h1>NotFound</h1>
                         }
-                        {/*<li><NavLink className={({ isActive }) => isActive ? 'activeBtn'} to="#">Link1</NavLink></li>*/}
-                        {/*<li><NavLink  to="#">Link2</NavLink></li>*/}
-                        {/*<li><NavLink to="#">Link3</NavLink></li>*/}
-                        {/*<li><NavLink to="#">Link4</NavLink></li>*/}
                     </ul>
                 </div>
             </div>
