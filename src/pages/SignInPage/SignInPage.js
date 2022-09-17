@@ -1,18 +1,25 @@
 import './SignInPage.scss'
 import {useState} from "react";
 import {setCredentialsAction} from "../../redux/authReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../../UI/Button/Button";
+import {NavLink} from "react-router-dom";
+import {signUp, signIn} from "../../redux/asyncActions/fetchUsers";
 
 export const SignInPage = () => {
     const dispatch = useDispatch()
 
+    const token = useSelector(state => state.auth.token)
+    if (token){
+
+    }
+
     const inputs = [
         {
-            name: 'email',
-            id: 'email',
-            placeholder: 'Email',
-            type: 'email',
+            name: 'username',
+            id: 'username',
+            placeholder: 'Username',
+            type: 'text',
             required: true
         },
         {
@@ -25,7 +32,7 @@ export const SignInPage = () => {
     ]
 
     const [info, setInfo] = useState({
-        email: '',
+        username: '',
         password: ''
     })
 
@@ -36,13 +43,7 @@ export const SignInPage = () => {
     const handleFormSubmit = e => {
         e.preventDefault()
 
-        const payload = {
-            user: {
-                ...info
-            }
-        }
-
-        dispatch(setCredentialsAction(payload))
+        dispatch(signIn(info))
     }
 
     return(
@@ -51,7 +52,10 @@ export const SignInPage = () => {
                 <div className="signInImg"></div>
                 <div className="signInContent">
                     <h1>Sign Up</h1>
-                    <form className="signInForm">
+                    <form
+                        className="signInForm"
+                        onSubmit={handleFormSubmit}
+                    >
                         {
                             inputs.length > 0 && inputs.map(el => (
                                 <div key={el.id}>
@@ -70,6 +74,9 @@ export const SignInPage = () => {
                                 </div>
                             ))
                         }
+                        <NavLink to={'/signUp'}>
+                            Join us!
+                        </NavLink>
                         <Button
                             type="submit"
                         >

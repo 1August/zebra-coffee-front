@@ -1,31 +1,39 @@
 import './SignUpPage.scss'
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {fetchUser} from "../../redux/asyncActions/fetchUsers";
+import {signUp} from "../../redux/asyncActions/fetchUsers";
 import {Button} from "../../UI/Button/Button";
 
+import initialPhoto from '../../assets/img/initialPhoto.png'
 
 export const SignUpPage = () => {
     const dispatch = useDispatch()
 
     const inputs = [
         {
-            name: 'name',
-            id: 'name',
-            placeholder: 'Name',
+            name: 'username',
+            id: 'username',
+            placeholder: 'Username',
             type: 'text',
             required: true
         },
         {
-            name: 'surname',
-            id: 'surname',
-            placeholder: 'Surname',
+            name: 'firstName',
+            id: 'firstName',
+            placeholder: 'First name',
             type: 'text',
             required: true
         },
         {
-            name: 'number',
-            id: 'number',
+            name: 'lastName',
+            id: 'lastName',
+            placeholder: 'Last name',
+            type: 'text',
+            required: true
+        },
+        {
+            name: 'phoneNumber',
+            id: 'phoneNumber',
             placeholder: 'Phone number',
             type: 'tel',
             required: true
@@ -54,12 +62,15 @@ export const SignUpPage = () => {
     ]
 
     const [info, setInfo] = useState({
-        name: '',
-        surname: '',
+        username: '',
+        firstName: '',
+        lastName: '',
+        locationId: 5,
+        phoneNumber: '+',
         email: '',
         password: '',
-        number: '+',
-        repeatPassword: ''
+        repeatPassword: '',
+        image: initialPhoto
     })
 
     const handleInputChange = e => {
@@ -74,8 +85,7 @@ export const SignUpPage = () => {
         }
 
         const {repeatPassword: _, ...payload} = {...info}
-        console.log(payload)
-        // dispatch(fetchUser(payload))
+        dispatch(signUp(payload))
     }
 
     return(
