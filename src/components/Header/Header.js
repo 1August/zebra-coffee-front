@@ -4,24 +4,36 @@ import {NavLink} from "react-router-dom";
 import {AiOutlineShoppingCart} from "react-icons/ai";
 
 import logo from "../../assets/img/zebraCoffee.png";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {logOutAction} from "../../redux/authReducer";
 
-const links = [
-    // {
-    //     label: "Profile",
-    //     to: "/profile",
-    // },
-    {
-        label: "Products",
-        to: "/products",
-    },
-    {
-        label: "SignUp",
-        to: "/signUp",
-    },
-];
 
 export const Header = () => {
+    const dispatch = useDispatch()
+
+    const links = [
+        // {
+        //     label: "Profile",
+        //     to: "/profile",
+        // },
+        {
+            label: "Products",
+            to: "/products",
+        },
+        {
+            label: "SignUp",
+            to: "/signUp",
+        },
+        {
+            label: "SignOut",
+            to: "/signOut",
+            onClick: e => {
+                e.preventDefault()
+                dispatch(logOutAction())
+            }
+        },
+    ];
+
     const {user} = useSelector((state) => state.auth);
 
     return (
@@ -42,6 +54,7 @@ export const Header = () => {
                                             isActive ? "active" : ""
                                         }
                                         to={el.to}
+                                        onClick={el?.onClick}
                                     >
                                         {el.label}
                                     </NavLink>

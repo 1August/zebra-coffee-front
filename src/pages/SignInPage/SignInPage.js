@@ -3,15 +3,17 @@ import {useState} from "react";
 import {setCredentialsAction} from "../../redux/authReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../../UI/Button/Button";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {signUp, signIn} from "../../redux/asyncActions/fetchUsers";
 
 export const SignInPage = () => {
     const dispatch = useDispatch()
 
+    const nav = useNavigate()
+
     const token = useSelector(state => state.auth.token)
     if (token){
-
+        nav('/products')
     }
 
     const inputs = [
@@ -51,7 +53,7 @@ export const SignInPage = () => {
             <div className="container">
                 <div className="signInImg"></div>
                 <div className="signInContent">
-                    <h1>Sign Up</h1>
+                    <h1>Sign In</h1>
                     <form
                         className="signInForm"
                         onSubmit={handleFormSubmit}
