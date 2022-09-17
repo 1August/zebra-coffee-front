@@ -1,8 +1,9 @@
 import {useSelector} from "react-redux";
 import {Navigate, Route} from "react-router";
 import {SignInPage} from "../../pages/SignInPage/SignInPage";
+import {MainPage} from "../../pages/MainPage/MainPage";
 
-export const RequireAuth = ({children, reverse, ...props}) => {
+export const RequireAuth = ({children = <MainPage/>, reverse = false, ...props}) => {
     const token = useSelector(state => state.auth.token)
 
     // if (token){
@@ -10,6 +11,6 @@ export const RequireAuth = ({children, reverse, ...props}) => {
     // }
     // return <SignInPage/>
 
-    return token ? (reverse ? <Navigate to={'/signIn'}/> : children) :
+    return token ? (reverse ? <Navigate to={'/'}/> : children) :
         (reverse ? children : <Navigate to={'/signIn'}/>)
 }

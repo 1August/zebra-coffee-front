@@ -51,7 +51,7 @@ export const MyRoutes = () => {
             reverse: false
         },
         {
-            path: "/*",
+            path: "*",
             component: <ErrorPage/>,
             requireAuth: false,
             reverse: false
@@ -62,18 +62,22 @@ export const MyRoutes = () => {
         <Routes>
             {routes.length > 0 &&
                 routes.map((el) =>
-                    el.requireAuth ? <Route
-                        key={el.path}
-                        path={el.path}
-                        element={<RequireAuth>
-                            el.component
-                        </RequireAuth>
-                        }
-                    /> : <Route
-                        key={el.path}
-                        path={el.path}
-                        element={el.component}
-                    />
+                        // el.requireAuth ?
+                        <Route
+                            key={el.path}
+                            path={el.path}
+                            element={<RequireAuth
+                                reverse={el.reverse}
+                            >
+                                {el.component}
+                            </RequireAuth>
+                            }
+                        />
+                    //     : <Route
+                    //     key={el.path}
+                    //     path={el.path}
+                    //     element={el.component}
+                    // />
                 )}
         </Routes>
     );
