@@ -1,19 +1,20 @@
-img{
+img {
     width: 100%;
 }
 
-.container{
+.container {
     padding: 0 1rem;
     max-width: 1024px;
     margin: 0 auto;
 }
 
-main{
+main {
     padding: 3rem 0;
     background-color: rgba(var(--main-grey), 1);
+    min-height: 80vh;
 }
 
-:is(h1, h2, h3, h4, h5, h6, p){
+:is(h1, h2, h3, h4, h5, h6, p) {
     margin: 0;
     padding: 1rem 0;
 }
