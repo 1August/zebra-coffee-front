@@ -1,35 +1,40 @@
-import { Route, Routes } from "react-router";
-import { MainPage } from "../../pages/MainPage/MainPage";
-import Userpage from "../userpage/userpage";
+import {Route, Routes} from "react-router";
+import {MainPage} from "../../pages/MainPage/MainPage";
+// import Userpage from "../userpage/userpage";
 import {ProfilePage} from "../../pages/ProfilePage/ProfilePage";
 import {SignUpPage} from "../../pages/SignUpPage/SignUpPage";
 import {SignInPage} from "../../pages/SignInPage/SignInPage";
+import Products from "../products/products";
 
 export const MyRoutes = () => {
     const routes = [
         {
             path: "/",
-            component: <MainPage />,
+            component: <MainPage/>,
         },
         {
             path: "/cart",
-            component: <MainPage />,
+            component: <MainPage/>,
         },
         {
             path: "/signUp",
-            component: <SignUpPage />,
+            component: <SignUpPage/>,
         },
         {
             path: "/signIn",
-            component: <SignInPage />,
+            component: <SignInPage/>,
         },
-        {
-            path: "/account",
-            component: <Userpage />,
-        },
+        // {
+        //     path: "/account",
+        //     component: <Userpage/>,
+        // },
         {
             path: "/profile",
-            component: <ProfilePage />,
+            component: <ProfilePage/>,
+        },
+        {
+            path: "/products",
+            component: <Products/>,
         },
     ];
 
@@ -45,4 +50,4 @@ export const MyRoutes = () => {
                 ))}
         </Routes>
     );
-};
+}

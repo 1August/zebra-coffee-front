@@ -2,6 +2,7 @@ import './SignInPage.scss'
 import {useState} from "react";
 import {setCredentialsAction} from "../../redux/authReducer";
 import {useDispatch} from "react-redux";
+import {Button} from "../../UI/Button/Button";
 
 export const SignInPage = () => {
     const dispatch = useDispatch()
@@ -69,7 +70,11 @@ export const SignInPage = () => {
                                 </div>
                             ))
                         }
-                        <button type="submit">Sign In</button>
+                        <Button
+                            type="submit"
+                        >
+                            Sign In
+                        </Button>
                     </form>
                 </div>
             </div>
