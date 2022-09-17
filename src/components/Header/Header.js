@@ -1,7 +1,7 @@
 import './Header.css'
 import {NavLink} from 'react-router-dom'
 
-import { ShoppingCart } from '@mui/icons-material'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 import temp from '../../assets/img/logo.png'
 
@@ -49,7 +49,7 @@ export const Header = () => {
                     <ul>
                         <li>
                             <NavLink to="/cart">
-                                <ShoppingCart/>
+                                <AiOutlineShoppingCart/>
                             </NavLink>
                         </li>
                         <li>
