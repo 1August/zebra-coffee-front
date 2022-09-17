@@ -1,3 +1,10 @@
+:root{
+  --main-teal-green: 49, 151, 149;
+  --main-white: 0, 0, 0;
+  --main-grey: 237, 242, 247;
+  --main-blue: 9, 58, 80;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

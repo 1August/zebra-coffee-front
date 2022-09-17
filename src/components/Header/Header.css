@@ -1,6 +1,6 @@
 .header {
     padding: 1rem 0;
-    background-color: #319795;
+    background-color: #fff;
 }
 
 .header .container {
@@ -10,12 +10,12 @@
     gap: 2rem;
 }
 
-/* ---- */
-
-.header-logo {
-    width: min-content;
+.header a{
+    text-decoration: none;
+    color: rgba(var(--main-blue, 1));
 }
 
+/* ---- */
 .header-logo a {
     display: flex;
     align-items: center;
@@ -50,10 +50,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-
-    text-decoration: none;
-    color: #fff;
 }
 
 
@@ -75,7 +71,7 @@
 }
 
 .header-account img{
-    width: 64px;
+    width: 48px;
 }
 
 .header-account li:nth-of-type(2) img{

@@ -4,10 +4,6 @@ import {MainPage} from "../../pages/MainPage/MainPage"
 export const MyRoutes = () => {
     const routes = [
         {
-          path: '/',
-          component: <MainPage/>
-        },
-        {
             path: '/products',
             component: <MainPage/>
         },
