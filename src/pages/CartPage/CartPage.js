@@ -22,7 +22,7 @@ export const CartPage = () => {
     const [deleted, setDeleted] = useState(true);
 
     const [payed, setPayed] = useState(false);
-    const [stores, setStores] = useState();
+    const [stores, setStores] = useState(null);
 
     const [showModal, setShowModal] = useState();
 
@@ -33,6 +33,8 @@ export const CartPage = () => {
     );
 
     let filteredStores = null;
+
+    console.log(stores);
 
     if (stores) {
         filteredStores = stores?.filter((el) => {
@@ -73,6 +75,12 @@ export const CartPage = () => {
                     price: el.price,
                 });
             }
+        });
+
+        console.log({
+            customerId: id,
+            storeId: userLocation,
+            orderItems: orderItems,
         });
 
         axios({
@@ -120,6 +128,10 @@ export const CartPage = () => {
         localStorage.removeItem("cart");
         setCart([]);
     };
+
+    if (!filteredStores) {
+        return <div className="">loading</div>;
+    }
 
     return (
         <div className="cart-page" id="cartPage">

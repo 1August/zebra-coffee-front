@@ -109,6 +109,22 @@ export const ProfilePage = () => {
         return <div className="loading">Loading</div>;
     }
 
+    if (!activeButtons) {
+        return <div className="loading">Loading</div>;
+    }
+
+    if (!allOrders) {
+        return <div className="loading">Loading</div>;
+    }
+
+    const handleClick = (index) => {
+        const tempButtons = [...activeButtons];
+
+        tempButtons[index].active = !tempButtons[index].active;
+
+        setActiveButtons(tempButtons);
+    };
+
     return (
         <div className="profilePage" id="profilePage">
             <div className="container">
@@ -172,9 +188,12 @@ export const ProfilePage = () => {
                                         .toDateString()
                                         .split(" ");
 
-                                    // const actButton = activeButtons.filter(
-                                    //     (button) => button.id === el.id
-                                    // )[0];
+                                    let actButton = -1;
+                                    activeButtons.forEach((button, index) => {
+                                        if (button.id === el.id) {
+                                            actButton = index;
+                                        }
+                                    });
 
                                     return (
                                         <>
@@ -194,21 +213,87 @@ export const ProfilePage = () => {
                                                 </h3>
                                                 <button
                                                     className="statusInfo"
-                                                    // onClick={() =>
-                                                    //     activeButtons.filter(
-                                                    //         (button) =>
-                                                    //             button.id ===
-                                                    //             el.id
-                                                    //     )[0]
-                                                    // }
+                                                    onClick={() =>
+                                                        handleClick(actButton)
+                                                    }
                                                 >
                                                     <MdOutlineAccountCircle />
                                                     Подробнее
                                                 </button>
                                             </div>
-                                            <div className="statusItem">
-                                                123
-                                            </div>
+                                            {activeButtons[actButton]
+                                                .active && (
+                                                <div className="">
+                                                    <div className="statusItem">
+                                                        <p
+                                                            className={
+                                                                "statusTitle"
+                                                            }
+                                                        >
+                                                            #
+                                                        </p>
+                                                        <p
+                                                            className={
+                                                                "statusTitle"
+                                                            }
+                                                        >
+                                                            Название
+                                                        </p>
+                                                        <p
+                                                            className={
+                                                                "statusTitle"
+                                                            }
+                                                        >
+                                                            Количество
+                                                        </p>
+                                                        <h3 className="statusTitle">
+                                                            Цена
+                                                        </h3>
+                                                    </div>
+                                                    <div>
+                                                        {allOrders[actButton] &&
+                                                            allOrders[
+                                                                actButton
+                                                            ].orderItems.map(
+                                                                (el, index) => (
+                                                                    <div className="statusItem">
+                                                                        <p
+                                                                            className={
+                                                                                "statusTitle"
+                                                                            }
+                                                                        >
+                                                                            {index +
+                                                                                1}
+                                                                        </p>
+                                                                        <p
+                                                                            className={
+                                                                                "statusTitle"
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                el.name
+                                                                            }
+                                                                        </p>
+                                                                        <p
+                                                                            className={
+                                                                                "statusTitle"
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                el.quantity
+                                                                            }
+                                                                        </p>
+                                                                        <h3 className="statusTitle">
+                                                                            {
+                                                                                el.list_price
+                                                                            }
+                                                                        </h3>
+                                                                    </div>
+                                                                )
+                                                            )}
+                                                    </div>
+                                                </div>
+                                            )}
                                         </>
                                     );
                                 })
