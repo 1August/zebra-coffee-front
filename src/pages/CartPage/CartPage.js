@@ -7,7 +7,11 @@ import { mockConfigInteract } from "../../web3/smartcontracts";
 import convert from "crypto-convert";
 
 import { ethers } from "ethers";
+import { decodeToken } from "react-jwt";
+
 import CartCard from "./cart-card";
+import CartModal from "./cart-modal";
+import axios from "axios";
 
 export const CartPage = () => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")));
@@ -18,8 +22,33 @@ export const CartPage = () => {
     const [deleted, setDeleted] = useState(true);
 
     const [payed, setPayed] = useState(false);
-
     const [stores, setStores] = useState();
+
+    const [showModal, setShowModal] = useState();
+
+    const [userLocation, setUserLocation] = useState("");
+
+    const { location, id } = decodeToken(
+        JSON.parse(localStorage.getItem("user")).token
+    );
+
+    let filteredStores = null;
+
+    if (stores) {
+        filteredStores = stores.filter((el) => {
+            return el.location_id === location.id;
+        });
+    }
+
+    useEffect(() => {
+        const getStores = async () => {
+            const result = await axios.get(
+                "https://zebra-hackathon.herokuapp.com/api/stores/"
+            );
+            setStores(result.data);
+        };
+        getStores();
+    }, []);
 
     useEffect(() => {
         setCart(JSON.parse(localStorage.getItem("cart")));
@@ -37,6 +66,31 @@ export const CartPage = () => {
         setNumberOfProducts(tempNumberOfProd);
     }, [cart, deleted]);
 
+    const postOrder = async () => {
+        const orderItems = [];
+        cart.forEach((el) => {
+            for (let i = 0; i < el.productNumber; i++) {
+                orderItems.push({
+                    id: +el.id,
+                    price: +el.price,
+                });
+            }
+        });
+
+        const data = {
+            customerId: +id,
+            storeId: +userLocation,
+            orderItems: orderItems,
+        };
+
+        console.log(JSON.stringify(data));
+
+        axios.post(
+            "https://zebra-hackathon.herokuapp.com/api/orders/",
+            JSON.stringify(data)
+        );
+    };
+
     const login = async () => {
         await onConnect().then((data) => {
             mockConfigInteract().then(async (res) => {
@@ -51,8 +105,6 @@ export const CartPage = () => {
                     "ether"
                 );
 
-                console.log(converted);
-
                 const result = await res.methods
                     .send_ETH("0xd1d0A2cB7080b8A52031a0a97DC7DDcf49A83b0d")
                     .send({
@@ -62,6 +114,7 @@ export const CartPage = () => {
                     });
 
                 if (result.status) {
+                    postOrder();
                     setPayed(true);
                 }
             });
@@ -75,6 +128,15 @@ export const CartPage = () => {
 
     return (
         <div className="cart-page" id="cartPage">
+            {showModal && (
+                <CartModal
+                    isModal={showModal}
+                    closeModal={setShowModal}
+                    filteredStores={filteredStores}
+                    login={login}
+                    setUserLocation={setUserLocation}
+                />
+            )}
             <div className="container">
                 <div className="cart-page-header">
                     <h2>Ваша корзина</h2>
@@ -104,7 +166,10 @@ export const CartPage = () => {
                 >
                     Очистить корзину
                 </button>
-                <Button onClick={async () => await login()}>
+                <Button
+                    // onClick={async () => await login()}
+                    onClick={() => setShowModal(true)}
+                >
                     Оплатить ETH
                 </Button>
             </div>
