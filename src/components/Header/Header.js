@@ -10,7 +10,6 @@ import {logOutAction} from "../../redux/authReducer";
 
 export const Header = () => {
     const user = useSelector(state => state.auth.user)
-    console.log(user)
     let role = null
     if (user){
         role = user?.role
