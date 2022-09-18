@@ -78,7 +78,6 @@ export const signIn = payload =>
                  */
 
                 const data = decodeToken(res.data.token)
-                console.log({user: data, token: res.data.token})
 
                 dispatch(setCredentialsAction({user: data, token: res.data.token}))
             })
