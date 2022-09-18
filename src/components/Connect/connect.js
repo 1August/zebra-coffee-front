@@ -14,13 +14,15 @@ export const Connect = () => {
 
     const interact = async () => {
         myContractConfigInteract().then(async (res) => {
+            const user = window.localStorage.getItem("userAccount")["account"];
+
             await convert.ready();
             console.log(convert.ETH.USD(1));
 
             await res.methods
                 .send_ETH("0xd1d0A2cB7080b8A52031a0a97DC7DDcf49A83b0d")
                 .send({
-                    from: "0x4678eAB475842a91957ba0952A4684514770A124",
+                    from: user,
                     gasPrice: "20000000000",
                     value: "10000000000000000",
                 });
