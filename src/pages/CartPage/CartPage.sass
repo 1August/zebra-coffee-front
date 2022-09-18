@@ -1,0 +1,41 @@
+.cart-page
+
+    &-header
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+    ul
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+
+        row-gap: 2rem
+
+.cart-card-el
+    display: flex
+    justify-content: flex-start
+    align-items: center
+
+.product-card
+    position: relative
+
+    &:hover &__delete_button
+        opacity: 1
+
+    &__delete_button
+        width: 2.5rem
+        height: 2.5rem
+
+        position: absolute
+
+        right: 1.5rem
+        top: 1.5rem
+
+        cursor: pointer
+
+        opacity: 0
+
+        transition: all 0.3s
+
+    .product-card-price
+        text-align: center
