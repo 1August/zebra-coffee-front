@@ -46,6 +46,7 @@ const Products = () => {
     useEffect(() => {
         const getProducts = async () => {
             const result = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15");
+            // console.log(result.data.results)
             setProducts(result.data.results);
         };
         getProducts();
@@ -53,7 +54,8 @@ const Products = () => {
 
     useEffect(() => {
         if (products) {
-            const tempMax = products.reduce((max, el) => (el.price > max && el.price), 0)
+            console.log(products)
+            const tempMax = products.reduce((max, el) => (+el.price > +max ? +el.price : max), 0)
             setMaxPrice(tempMax);
             setPrice({...price, right: tempMax})
         }

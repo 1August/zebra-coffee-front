@@ -34,10 +34,10 @@ const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
         const newProductsCount = {};
 
         products.forEach((el) => {
-            if (el["category_id"] in newProductsCount) {
-                newProductsCount[el["category_id"]]++;
+            if (el["categoryId"] in newProductsCount) {
+                newProductsCount[el["categoryId"]]++;
             } else {
-                newProductsCount[el["category_id"]] = 1;
+                newProductsCount[el["categoryId"]] = 1;
             }
         });
 
