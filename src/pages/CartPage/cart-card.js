@@ -2,9 +2,6 @@ import React, { useState } from "react";
 
 import remove from "./remove.png";
 
-import tempPhoto from '../../assets/img/coffeeTemp.png'
-
-
 const CartCard = ({ el, deleted, setDeleted }) => {
     const { image, name, description, price, productNumber } = el;
 
@@ -44,7 +41,7 @@ const CartCard = ({ el, deleted, setDeleted }) => {
 
             <div className="product-card-img__container">
                 <img
-                    src={image || tempPhoto}
+                    src={image}
                     className="product-card-img"
                     alt={"Product card"}
                 />

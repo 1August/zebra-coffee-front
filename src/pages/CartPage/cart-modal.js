@@ -5,28 +5,29 @@ import { Button } from "../../UI/Button/Button";
 import remove from "./remove.png";
 
 const CartModal = ({
-    isModal,
-    closeModal,
-    filteredStores,
-    login,
-    setUserLocation,
-}) => {
+                       isModal,
+                       closeModal,
+                       filteredStores,
+                       login,
+                       setUserLocation,
+                   }) => {
     if (!isModal) return null;
 
     const options = [];
 
     filteredStores.forEach((el) => {
         options.push({
-            value: el.location_id,
+            value: el.id,
             label: el.street,
         });
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setUserLocation(e.target.select.value);
         login();
     };
+
+    console.log(options);
 
     return ReactDOM.createPortal(
         <div className="cart-modal">
@@ -44,7 +45,13 @@ const CartModal = ({
                 <form className="card-modal-form" onSubmit={handleSubmit}>
                     <h2 className="card-modal-header">Выбери адрес</h2>
 
-                    <select required name="select">
+                    <select
+                        required
+                        name="select"
+                        onChange={(e) => {
+                            setUserLocation(e.target.value);
+                        }}
+                    >
                         {options.map((el) => (
                             <option value={el.value}>{el.label}</option>
                         ))}

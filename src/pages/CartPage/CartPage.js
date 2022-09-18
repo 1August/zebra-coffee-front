@@ -22,7 +22,7 @@ export const CartPage = () => {
     const [deleted, setDeleted] = useState(true);
 
     const [payed, setPayed] = useState(false);
-    const [stores, setStores] = useState();
+    const [stores, setStores] = useState(null);
 
     const [showModal, setShowModal] = useState();
 
@@ -33,6 +33,8 @@ export const CartPage = () => {
     );
 
     let filteredStores = null;
+
+    console.log(stores);
 
     if (stores) {
         filteredStores = stores?.filter((el) => {
@@ -52,13 +54,11 @@ export const CartPage = () => {
 
     useEffect(() => {
         setCart(JSON.parse(localStorage.getItem("cart")));
-    }, [deleted])
+    }, [deleted]);
 
     useEffect(() => {
         let tempCartPrice = 0;
-        cart?.forEach(
-            (el) => (tempCartPrice += +el.price * +el.productNumber)
-        );
+        cart?.forEach((el) => (tempCartPrice += +el.price * +el.productNumber));
         setCartPrice(tempCartPrice);
 
         let tempNumberOfProd = 0;
@@ -75,6 +75,12 @@ export const CartPage = () => {
                     price: el.price,
                 });
             }
+        });
+
+        console.log({
+            customerId: id,
+            storeId: userLocation,
+            orderItems: orderItems,
         });
 
         axios({
@@ -123,6 +129,10 @@ export const CartPage = () => {
         setCart([]);
     };
 
+    if (!filteredStores) {
+        return <div className="">loading</div>;
+    }
+
     return (
         <div className="cart-page" id="cartPage">
             {showModal && (
@@ -137,8 +147,23 @@ export const CartPage = () => {
             <div className="container">
                 <div className="cart-page-header">
                     <h2>Ваша корзина</h2>
-                    <div className="cart-page-count">
-                        У вас {numberOfProducts} товара на сумму: {cartPrice}тг
+                    <div className="cart-page-header-container">
+                        <div className="cart-page-count">
+                            У вас {numberOfProducts} товара на сумму:{" "}
+                            {cartPrice}тг
+                        </div>
+                        <button
+                            onClick={handleClickClearCart}
+                            style={{ marginRight: "1rem" }}
+                        >
+                            Очистить корзину
+                        </button>
+                        <Button
+                            // onClick={async () => await login()}
+                            onClick={() => setShowModal(true)}
+                        >
+                            Оплатить ETH
+                        </Button>
                     </div>
                 </div>
 
@@ -157,18 +182,6 @@ export const CartPage = () => {
                         <h1>Cart is empty!</h1>
                     )}
                 </ul>
-                <button
-                    onClick={handleClickClearCart}
-                    style={{ marginRight: "2rem" }}
-                >
-                    Очистить корзину
-                </button>
-                <Button
-                    // onClick={async () => await login()}
-                    onClick={() => setShowModal(true)}
-                >
-                    Оплатить ETH
-                </Button>
             </div>
         </div>
     );

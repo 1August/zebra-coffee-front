@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -6,8 +6,10 @@ import ProductsNav from "./products-comp/products-nav";
 import ProductCard from "./products-comp/product-card";
 import ProductPrice from "./products-comp/product-price";
 
-
 import "./products-sass/products.sass";
+
+
+import temp from '../../assets/img/coffeeTemp.png'
 
 const Products = () => {
     /**
@@ -24,28 +26,31 @@ const Products = () => {
 
     const [price, setPrice] = useState({
         left: 0,
-        right: 0
-    })
+        right: 0,
+    });
 
-    const [tempCart, setTempCart] = useState([])
+    const [tempCart, setTempCart] = useState([]);
 
     const handleTempCartAdd = (product, productNumber) => {
-        tempCart.length <= 0 ?
-            setTempCart([{...product, productNumber}]) :
-            setTempCart([...tempCart, {...product, productNumber}])
+        tempCart.length <= 0
+            ? setTempCart([{ ...product, productNumber }])
+            : setTempCart([...tempCart, { ...product, productNumber }]);
 
-        const prevCart = JSON.parse(localStorage.getItem('cart')) || []
+        const prevCart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        localStorage.setItem('cart', JSON.stringify([
-            ...prevCart, {...product, productNumber}
-        ]))
-    }
+        localStorage.setItem(
+            "cart",
+            JSON.stringify([...prevCart, { ...product, productNumber }])
+        );
+    };
 
     const [maxPrice, setMaxPrice] = useState(0);
 
     useEffect(() => {
         const getProducts = async () => {
-            const result = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=40");
+            const result = await axios.get(
+                "https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15"
+            );
             // console.log(result.data.results)
             setProducts(result.data.results);
         };
@@ -55,9 +60,12 @@ const Products = () => {
     useEffect(() => {
         if (products) {
             // console.log(products)
-            const tempMax = products.reduce((max, el) => (+el.price > +max ? +el.price : max), 0)
+            const tempMax = products.reduce(
+                (max, el) => (+el.price > +max ? +el.price : max),
+                0
+            );
             setMaxPrice(tempMax);
-            setPrice({...price, right: tempMax})
+            setPrice({ ...price, right: tempMax });
         }
     }, [products]);
 
@@ -88,17 +96,28 @@ const Products = () => {
 
                     <div className="product-main-right">
                         <div className="products-lists">
-                            <h2>{'Кофе или Популярные'}</h2>
+                            <h2>{"Кофе или Популярные"}</h2>
                             <div className="product-lists-container">
-                                {
-                                    products
-                                        .filter(el => el.price >= +price.left && el.price <= +price.right)
-                                        .map((el) => <ProductCard
+                                {products
+                                    .filter(
+                                        (el) =>
+                                            el.price >= +price.left &&
+                                            el.price <= +price.right
+                                    )
+                                    .filter((el) =>
+                                        productsFilter
+                                            ? el.category_id === productsFilter
+                                            : el
+                                    )
+                                    .map((el) => (
+                                        <ProductCard
                                             key={el.id}
                                             el={el}
-                                            handleTempCartAdd={handleTempCartAdd}
-                                        />)
-                                }
+                                            handleTempCartAdd={
+                                                handleTempCartAdd
+                                            }
+                                        />
+                                    ))}
                             </div>
                         </div>
                     </div>

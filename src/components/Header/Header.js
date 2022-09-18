@@ -70,7 +70,7 @@ export const Header = () => {
                         </li>
                         <li>
                             {
-                                user ? <NavLink to={`/profile/${user.id}`}>
+                                user ? <NavLink to={`/profile`}>
                                     <h3>{ user.userName }</h3>
                                     {/*<img*/}
                                     {/*    src={*/}
