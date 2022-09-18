@@ -62,7 +62,7 @@ export const CartPage = () => {
         setCartPrice(tempCartPrice);
 
         let tempNumberOfProd = 0;
-        cart.forEach((el) => (tempNumberOfProd += +el.productNumber));
+        cart?.forEach((el) => (tempNumberOfProd += +el.productNumber));
         setNumberOfProducts(tempNumberOfProd);
     }, [cart, deleted]);
 

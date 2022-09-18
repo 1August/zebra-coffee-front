@@ -20,7 +20,7 @@ const CartCard = ({ el, deleted, setDeleted }) => {
 
         if (tempCart[indexOfElement].productNumber > 1) {
             tempCart[indexOfElement].productNumber =
-                parseInt(tempCart[indexOfElement].productNumber) - 1;
+                +(tempCart[indexOfElement].productNumber) - 1;
         } else {
             tempCart.splice(indexOfElement, 1);
         }
