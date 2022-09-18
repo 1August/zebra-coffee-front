@@ -60,7 +60,11 @@ const Products = () => {
     }, [products]);
 
     if (!products) {
-        return <div className="">Loading</div>;
+        return (
+            <div className="container">
+                <h1>Loading</h1>
+            </div>
+        );
     }
 
     return (

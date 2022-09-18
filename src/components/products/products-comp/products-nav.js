@@ -1,34 +1,34 @@
 import {useState, useEffect} from "react";
 
-const productTypes = [
-    {
-        type: 1,
-        name: "Кофе",
-    },
-    {
-        type: 2,
-        name: "Чай",
-    },
-    {
-        type: "lemonade",
-        name: "Лимонады",
-    },
-    {
-        type: "cocktail",
-        name: "Коктейли",
-    },
-    {
-        type: "sweet",
-        name: "Сладкое",
-    },
-    {
-        type: "snacks",
-        name: "Снеки",
-    },
-];
-
 const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
     const [productsCount, setProductsCount] = useState({});
+
+    const productTypes = [
+        {
+            type: 1,
+            name: "Кофе",
+        },
+        {
+            type: 2,
+            name: "Чай",
+        },
+        {
+            type: "lemonade",
+            name: "Лимонады",
+        },
+        {
+            type: "cocktail",
+            name: "Коктейли",
+        },
+        {
+            type: "sweet",
+            name: "Сладкое",
+        },
+        {
+            type: "snacks",
+            name: "Снеки",
+        },
+    ];
 
     useEffect(() => {
         const newProductsCount = {};

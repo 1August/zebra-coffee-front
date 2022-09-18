@@ -43,36 +43,9 @@
 
   &Img{
     width: 25%;
-
-    p{
-      cursor: pointer;
-      text-align: center;
-    }
-
-    label{
-      padding: .5rem 1rem;
-      border: 1px solid rgba(var(--main-teal-green), .3);
-      cursor: pointer;
-    }
-
-    input{
-      display: none;
-    }
   }
 
   &Text{
     width: calc(75% - 1rem);
-
-    & > * {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    & > div + div{
-      margin-top: 2rem;
-    }
-    input{
-      flex-grow: 1;
-    }
   }
 }

@@ -14,9 +14,9 @@ export const CartPage = () => {
             <div className="container">
                 <ul>
                     {
-                        cart?.length > 0 ? cart?.map(el => (
-                            <li key={el.id}>
-                                {el.id} {el.name}
+                        cart?.length > 0 ? cart?.map((el, i) => (
+                            <li key={el.id + `${i}`}>
+                                {el.id} {el.name} - {el.productNumber}
                             </li>
                         )) : <h1>Cart is empty!</h1>
                     }
