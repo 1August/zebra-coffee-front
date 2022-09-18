@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 
-const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
+const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
     const [productsCount, setProductsCount] = useState({});
 
     const productTypes = [
@@ -14,41 +13,31 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
             name: "Чай",
         },
         {
-            type: 3,
+            type: "lemonade",
             name: "Лимонады",
         },
         {
-            type: 4,
+            type: "cocktail",
             name: "Коктейли",
         },
         {
-            type: 5,
+            type: "sweet",
             name: "Сладкое",
         },
         {
-            type: 6,
+            type: "snacks",
             name: "Снеки",
         },
     ];
 
     useEffect(() => {
-        const getCategories = async () => {
-            const result = await axios.get(
-                "https://zebra-hackathon.herokuapp.com/api/categories"
-            );
-            console.log(result);
-        };
-        getCategories();
-    }, []);
-
-    useEffect(() => {
         const newProductsCount = {};
 
         products.forEach((el) => {
-            if (el["category_id"] in newProductsCount) {
-                newProductsCount[el["category_id"]]++;
+            if (el["categoryId"] in newProductsCount) {
+                newProductsCount[el["categoryId"]]++;
             } else {
-                newProductsCount[el["category_id"]] = 1;
+                newProductsCount[el["categoryId"]] = 1;
             }
         });
 
@@ -59,7 +48,7 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
         <div className="products-nav">
             <h2 className="products-nav-header">Категории</h2>
             <ul className="products-nav-list">
-                {productTypes.map((el) => (
+                {productTypes.map(el => (
                     <li
                         key={el.name}
                         className={`products-nav-list__el ${
