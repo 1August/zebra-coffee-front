@@ -62,15 +62,11 @@ export const ManagerPage = () => {
         );
     }
 
-<<<<<<< HEAD
-=======
-
     const handleAddNewProduct = () => {
         dispatch(changeFunctionality({functionality: 'c'}))
         dispatch(showModal())
     }
 
->>>>>>> parent of c30575c (manager page)
     return (
         <div className="managerPage" id="managerPage">
             <div className="container">
