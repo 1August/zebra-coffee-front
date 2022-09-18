@@ -1,4 +1,4 @@
-import './CartPage.scss'
+import './CartPage.sass'
 import {useEffect, useState} from "react";
 
 export const CartPage = () => {

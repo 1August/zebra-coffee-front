@@ -10,6 +10,7 @@ import {logOutAction} from "../../redux/authReducer";
 
 export const Header = () => {
     const user = useSelector(state => state.auth.user)
+    console.log(user)
     let role = null
     if (user){
         role = user?.role
@@ -70,8 +71,8 @@ export const Header = () => {
                         </li>
                         <li>
                             {
-                                user ? <NavLink to="/profile">
-                                    <h3>{ user.username }</h3>
+                                user ? <NavLink to={`/profile/${user.id}`}>
+                                    <h3>{ user.userName }</h3>
                                     {/*<img*/}
                                     {/*    src={*/}
                                     {/*        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"*/}

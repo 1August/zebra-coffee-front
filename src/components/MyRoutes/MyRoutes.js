@@ -42,7 +42,7 @@ export const MyRoutes = () => {
             reverse: false
         },
         {
-            path: "/profile",
+            path: "/profile/:id",
             component: <ProfilePage/>,
             requireAuth: true,
             reverse: false
