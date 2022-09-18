@@ -52,7 +52,7 @@ export const CartPage = () => {
 
     useEffect(() => {
         setCart(JSON.parse(localStorage.getItem("cart")));
-    }, [deleted]);
+    }, [deleted])
 
     useEffect(() => {
         let tempCartPrice = 0;
