@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 
 import { Button } from "../../../UI/Button/Button";
-import tempPhoto from '../../../assets/img/coffeeTemp.png'
 
 const ProductCard = ({el, handleTempCartAdd}) => {
     const {
@@ -23,7 +22,7 @@ const ProductCard = ({el, handleTempCartAdd}) => {
     return (
         <div className="product-card">
             <div className="product-card-img__container">
-                <img src={image || tempPhoto} className="product-card-img" alt={'Product card'}/>
+                <img src={image} className="product-card-img" alt={'Product card'}/>
             </div>
 
             <div className="product-card-info">
