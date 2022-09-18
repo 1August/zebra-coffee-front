@@ -11,10 +11,24 @@
 
     background-color: rgba(0, 0, 0, 0.3)
 
+    &__delete_button
+        width: 2.5rem
+        height: 2.5rem
+
+        position: absolute
+
+        right: 1.5rem
+        top: 1.5rem
+
+        cursor: pointer
+
+        transition: all 0.3s
+
     &__container
+        position: relative
         background-color: #FFFFFF
 
-        height: 20rem
+        height: 12.5rem
         width: 20%
 
         border: 1px solid rgba(232, 234, 238, 0.8)
@@ -24,3 +38,17 @@
         position: relative
 
         padding: 1.5rem
+
+    select
+        display: inline-block
+        width: 100%
+        // height: 34px
+        padding: 1rem
+        position: relative
+
+        border-radius: 0.75rem
+        margin-top: 1rem
+        margin-bottom: 1rem
+
+.card-modal-header
+    padding-top: 0
