@@ -56,9 +56,7 @@ export const CartPage = () => {
 
     useEffect(() => {
         let tempCartPrice = 0;
-        cart?.forEach(
-            (el) => (tempCartPrice += +el.price * +el.productNumber)
-        );
+        cart?.forEach((el) => (tempCartPrice += +el.price * +el.productNumber));
         setCartPrice(tempCartPrice);
 
         let tempNumberOfProd = 0;
@@ -137,8 +135,23 @@ export const CartPage = () => {
             <div className="container">
                 <div className="cart-page-header">
                     <h2>Ваша корзина</h2>
-                    <div className="cart-page-count">
-                        У вас {numberOfProducts} товара на сумму: {cartPrice}тг
+                    <div className="cart-page-header-container">
+                        <div className="cart-page-count">
+                            У вас {numberOfProducts} товара на сумму:{" "}
+                            {cartPrice}тг
+                        </div>
+                        <button
+                            onClick={handleClickClearCart}
+                            style={{ marginRight: "1rem" }}
+                        >
+                            Очистить корзину
+                        </button>
+                        <Button
+                            // onClick={async () => await login()}
+                            onClick={() => setShowModal(true)}
+                        >
+                            Оплатить ETH
+                        </Button>
                     </div>
                 </div>
 
@@ -157,18 +170,6 @@ export const CartPage = () => {
                         <h1>Cart is empty!</h1>
                     )}
                 </ul>
-                <button
-                    onClick={handleClickClearCart}
-                    style={{ marginRight: "2rem" }}
-                >
-                    Очистить корзину
-                </button>
-                <Button
-                    // onClick={async () => await login()}
-                    onClick={() => setShowModal(true)}
-                >
-                    Оплатить ETH
-                </Button>
             </div>
         </div>
     );
