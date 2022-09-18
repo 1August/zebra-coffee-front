@@ -132,7 +132,10 @@ export const ProfilePage = () => {
             <div className="container">
                 <div className="profileInfo">
                     <div className="profileInfo-top">
-                        <img src={user.image || avatar} alt="Profile image" />
+                        {
+                            console.log(user.image)
+                        }
+                        <img src={avatar} alt="Profile image" />
                     </div>
                     <div className="profileInfo-text">
                         <h1>{`${user?.firstName} ${user?.lastName}`}</h1>
