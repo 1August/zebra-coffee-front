@@ -71,24 +71,21 @@ export const CartPage = () => {
         cart.forEach((el) => {
             for (let i = 0; i < el.productNumber; i++) {
                 orderItems.push({
-                    id: +el.id,
-                    price: +el.price,
+                    id: el.id,
+                    price: el.price,
                 });
             }
         });
 
-        const data = {
-            customerId: +id,
-            storeId: +userLocation,
-            orderItems: orderItems,
-        };
-
-        console.log(JSON.stringify(data));
-
-        axios.post(
-            "https://zebra-hackathon.herokuapp.com/api/orders/",
-            JSON.stringify(data)
-        );
+        axios({
+            method: "post",
+            url: "https://zebra-hackathon.herokuapp.com/api/orders/",
+            data: {
+                customerId: id,
+                storeId: userLocation,
+                orderItems: orderItems,
+            },
+        });
     };
 
     const login = async () => {
