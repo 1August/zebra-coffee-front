@@ -14,6 +14,7 @@ const ProductCard = ({el, handleTempCartAdd}) => {
     }
 
     const handleCartAddBtnClick = () => {
+        if (productNumber < 1) return
         handleTempCartAdd(el, productNumber)
         setProductNumber(0)
     }

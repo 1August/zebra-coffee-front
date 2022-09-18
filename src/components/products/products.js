@@ -54,7 +54,7 @@ const Products = () => {
 
     useEffect(() => {
         if (products) {
-            console.log(products)
+            // console.log(products)
             const tempMax = products.reduce((max, el) => (+el.price > +max ? +el.price : max), 0)
             setMaxPrice(tempMax);
             setPrice({...price, right: tempMax})

@@ -11,8 +11,6 @@ export const ProfilePage = () => {
 
     const user = useSelector(state => state.auth.user)
 
-    // console.log(user)
-
     const handleSignOutClick = e => {
         e.preventDefault()
         dispatch(logOutAction())
@@ -63,14 +61,15 @@ export const ProfilePage = () => {
                 <div className="profileInfo">
                     <div className="profileInfo-top">
                         <img
-                            src={'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80'}
-                            alt="Profile image"/>
+                            src={user.image}
+                            alt="Profile image"
+                        />
                     </div>
                     <div className="profileInfo-text">
                         <h1>{`${user?.firstName} ${user?.lastName}`}</h1>
                         <h3>{user?.email}</h3>
-                        <h3>{user?.phoneNumber}</h3>
-                        <p>{user?.location}</p>
+                        <h3>{user?.phone}</h3>
+                        <p>{user?.location.country}</p>
                         <p>
                             <NavLink
                                 to={'/signOut'}
@@ -106,17 +105,17 @@ export const ProfilePage = () => {
                             orders.length > 0 ? orders.filter(el => el.statusTitle.toLowerCase().includes(searchQuery.toLowerCase()))?.map(el => (
                                 <div className="statusItem">
                                     <p className={'statusOrder'}>
-                                        {el.statusOrder}
+                                        {el?.statusOrder}
                                     </p>
                                     <h3 className="statusTitle">
-                                        {el.statusTitle}
+                                        {el?.statusTitle}
                                     </h3>
                                     <h3 className="statusDate">
-                                        {el.statusDate}
+                                        {el?.statusDate}
                                     </h3>
                                     <button className="statusInfo">
                                         <MdOutlineAccountCircle/>
-                                        {el.statusInfo}
+                                        {el?.statusInfo}
                                     </button>
                                 </div>
                             )) : <h1>List is empty!</h1>

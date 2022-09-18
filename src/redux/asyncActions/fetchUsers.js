@@ -77,6 +77,8 @@ export const signIn = payload =>
                  * Need to get __UserID__
                  */
 
-                const {id: userId, role} = decodeToken(res.data.token)
-                dispatch(setCredentialsAction({user: {userId: userId, username: payload.username, role}, token: res.data.token}))
+                const data = decodeToken(res.data.token)
+                console.log({user: data, token: res.data.token})
+
+                dispatch(setCredentialsAction({user: data, token: res.data.token}))
             })

@@ -28,7 +28,7 @@ export const Modal = () => {
         nav('/')
     }
 
-    if (!isOpen) return console.log({isOpen, title, content})
+    if (!isOpen) return null
     return(
         <div className="modal" id="modal">
             <div className="container">
