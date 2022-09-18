@@ -45,7 +45,7 @@ const Products = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-            const result = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15");
+            const result = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=40");
             // console.log(result.data.results)
             setProducts(result.data.results);
         };

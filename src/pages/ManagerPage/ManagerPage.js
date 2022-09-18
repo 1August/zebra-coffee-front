@@ -60,13 +60,18 @@ export const ManagerPage = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-            const res = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15");
+            const res = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=40");
             setProducts(res.data.results);
             // console.log(res.data.results)
         };
         getProducts();
     }, []);
 
+
+    const handleAddNewProduct = () => {
+        dispatch(changeFunctionality({functionality: 'c'}))
+        dispatch(showModal())
+    }
     if (!products) {
         return (
             <div className="container">
@@ -75,11 +80,6 @@ export const ManagerPage = () => {
         );
     }
 
-
-    const handleAddNewProduct = () => {
-        dispatch(changeFunctionality({functionality: 'c'}))
-        dispatch(showModal())
-    }
 
     return (
         <div className="managerPage" id="managerPage">
