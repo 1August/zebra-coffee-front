@@ -1,0 +1,51 @@
+.modal{
+  padding-top: 4rem;
+  position: fixed;
+  inset: 0;
+
+  backdrop-filter: brightness(.5);
+
+  z-index: 10;
+
+  &Close{
+    padding: 2rem 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    svg{
+      cursor: pointer;
+      padding: .5rem 0;
+    }
+  }
+
+  &Window{
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  &Title{
+    text-align: center;
+    padding: 1rem;
+
+    border-bottom: 1px solid #33333320;
+  }
+
+  &Content{
+    padding: 2rem 1rem;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &Img{
+    width: 25%;
+  }
+
+  &Text{
+    width: calc(75% - 1rem);
+  }
+}

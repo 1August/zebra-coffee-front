@@ -3,6 +3,7 @@ import {Header} from "./components/Header/Header";
 import {MyRoutes} from "./components/MyRoutes/MyRoutes";
 import {useDispatch} from "react-redux";
 import {setCredentialsAction} from "./redux/authReducer";
+import {Modal} from "./components/Modal/Modal";
 
 function App() {
     const dispatch = useDispatch()
@@ -12,6 +13,8 @@ function App() {
 
     return (
         <div className="App">
+            <Modal/>
+
             <Header/>
             <main>
                 <MyRoutes/>

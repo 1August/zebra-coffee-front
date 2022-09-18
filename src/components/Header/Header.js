@@ -10,26 +10,27 @@ import {logOutAction} from "../../redux/authReducer";
 
 export const Header = () => {
     const user = useSelector(state => state.auth.user)
+    let role = null
+    if (user){
+        role = user?.role
+    }
     const dispatch = useDispatch()
 
-    const links = [
+    const links = (role === 'Manager' || role === 'Admin') ? [
         {
             label: "Products",
             to: "/products",
         },
         {
-            label: "SignUp",
-            to: "/signUp",
-        },
+            label: "Manage",
+            to: "/manage",
+        }
+    ] : [
         {
-            label: "SignOut",
-            to: "/signOut",
-            onClick: e => {
-                e.preventDefault()
-                dispatch(logOutAction())
-            }
-        },
-    ];
+            label: "Products",
+            to: "/products",
+        }
+    ]
 
     return (
         <header className="header" id="header">

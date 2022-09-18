@@ -1,6 +1,5 @@
 import {Route, Routes} from "react-router";
 import {MainPage} from "../../pages/MainPage/MainPage";
-// import Userpage from "../userpage/userpage";
 import {ProfilePage} from "../../pages/ProfilePage/ProfilePage";
 import {SignUpPage} from "../../pages/SignUpPage/SignUpPage";
 import {SignInPage} from "../../pages/SignInPage/SignInPage";
@@ -8,6 +7,7 @@ import Products from "../products/products";
 import {RequireAuth} from "../RequireAuth/RequireAuth";
 import {ErrorPage} from "../../pages/ErrorPage/ErrorPage";
 import {CartPage} from "../../pages/CartPage/CartPage";
+import {ManagerPage} from "../../pages/ManagerPage/ManagerPage";
 
 export const MyRoutes = () => {
     const routes = [
@@ -35,10 +35,12 @@ export const MyRoutes = () => {
             requireAuth: false,
             reverse: true
         },
-        // {
-        //     path: "/account",
-        //     component: <Userpage/>,
-        // },
+        {
+            path: "/manage",
+            component: <ManagerPage/>,
+            requireAuth: true,
+            reverse: false
+        },
         {
             path: "/profile",
             component: <ProfilePage/>,
@@ -63,7 +65,7 @@ export const MyRoutes = () => {
         <Routes>
             {routes.length > 0 &&
                 routes.map((el) =>
-                        // el.requireAuth ?
+                    el.requireAuth ?
                         <Route
                             key={el.path}
                             path={el.path}
@@ -73,12 +75,11 @@ export const MyRoutes = () => {
                                 {el.component}
                             </RequireAuth>
                             }
+                        /> : <Route
+                            key={el.path}
+                            path={el.path}
+                            element={el.component}
                         />
-                    //     : <Route
-                    //     key={el.path}
-                    //     path={el.path}
-                    //     element={el.component}
-                    // />
                 )}
         </Routes>
     );
