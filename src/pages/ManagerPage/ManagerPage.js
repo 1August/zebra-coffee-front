@@ -65,7 +65,7 @@ export const ManagerPage = () => {
             // console.log(res.data.results)
         };
         getProducts();
-    }, []);
+    }, [])
 
 
     const handleAddNewProduct = () => {
