@@ -2,7 +2,7 @@ import './ManageCard.scss'
 import {Button} from "../Button/Button";
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {setModal, showModal} from "../../redux/modalReducer";
+import {setModal, setModalAndShow, showModal} from "../../redux/modalReducer";
 
 export const ManageCard = ({el}) => {
     const dispatch = useDispatch()
@@ -18,8 +18,7 @@ export const ManageCard = ({el}) => {
 
 
     const handleManageCardChangeClick = () => {
-        dispatch(showModal())
-        dispatch(setModal({content: el}))
+        dispatch(setModalAndShow(el))
     }
 
     return (
@@ -53,7 +52,6 @@ export const ManageCard = ({el}) => {
                 </Button>
                 <Button
                     className="manageCard-edit-button"
-
                 >
                     Удалить
                 </Button>

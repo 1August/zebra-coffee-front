@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {logOutAction} from "../../redux/authReducer";
 import {NavLink} from "react-router-dom";
 import {useState} from "react";
+import {Input} from "../../UI/Input/Input";
 
 export const ProfilePage = () => {
     const dispatch = useDispatch()
@@ -89,10 +90,10 @@ export const ProfilePage = () => {
                     </ul>
                 </div>
                 <div className="allStatuses">
-                    <div className="statusesHe1ader">
+                    <div className="statusesHeader">
                         <h1>All orders</h1>
                         <div className="statusesSearch">
-                            <input
+                            <Input
                                 type="search"
                                 value={searchQuery}
                                 onChange={handleSearchQueryChange}
@@ -120,97 +121,6 @@ export const ProfilePage = () => {
                                 </div>
                             )) : <h1>List is empty!</h1>
                         }
-                        {/*<div className="statusItem">*/}
-                        {/*    */}
-                        {/*    <p className="statusOrder">1</p>*/}
-                        {/*    <h3 className="statusTitle">Lorem.</h3>*/}
-                        {/*    <h3 className="statusDate">Lorem ipsum dolor.</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">2</p>*/}
-                        {/*    <h3 className="statusTitle">Consequuntur.</h3>*/}
-                        {/*    <h3 className="statusDate">Ab, doloribus libero!</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">3</p>*/}
-                        {/*    <h3 className="statusTitle">Autem?</h3>*/}
-                        {/*    <h3 className="statusDate">Ab, animi, culpa.</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">4</p>*/}
-                        {/*    <h3 className="statusTitle">Nobis?</h3>*/}
-                        {/*    <h3 className="statusDate">At, in iure.</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">5</p>*/}
-                        {/*    <h3 className="statusTitle">Voluptatibus?</h3>*/}
-                        {/*    <h3 className="statusDate">Earum, eos voluptas.</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">6</p>*/}
-                        {/*    <h3 className="statusTitle">Laborum.</h3>*/}
-                        {/*    <h3 className="statusDate">Inventore, neque suscipit?</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">7</p>*/}
-                        {/*    <h3 className="statusTitle">Perferendis.</h3>*/}
-                        {/*    <h3 className="statusDate">Et, eveniet quia.</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">8</p>*/}
-                        {/*    <h3 className="statusTitle">Atque.</h3>*/}
-                        {/*    <h3 className="statusDate">Deserunt labore, repellat.</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">9</p>*/}
-                        {/*    <h3 className="statusTitle">Quaerat!</h3>*/}
-                        {/*    <h3 className="statusDate">Alias, nulla, repellendus!</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
-                        {/*<div className="statusItem">*/}
-                        {/*    <p className="statusOrder">10</p>*/}
-                        {/*    <h3 className="statusTitle">Sit.</h3>*/}
-                        {/*    <h3 className="statusDate">Earum eveniet, repellendus?</h3>*/}
-                        {/*    <button className="statusInfo">*/}
-                        {/*        <MdOutlineAccountCircle/>*/}
-                        {/*        See more*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
                     </div>
                 </div>
             </div>
