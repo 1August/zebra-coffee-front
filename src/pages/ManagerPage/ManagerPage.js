@@ -60,7 +60,7 @@ export const ManagerPage = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-            const res = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15");
+            const res = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=40");
             setProducts(res.data.results);
             // console.log(res.data.results)
         };
