@@ -35,8 +35,8 @@ export const CartPage = () => {
     let filteredStores = null;
 
     if (stores) {
-        filteredStores = stores.filter((el) => {
-            return el.location_id === location.id;
+        filteredStores = stores?.filter((el) => {
+            return el?.location_id === location?.id;
         });
     }
 
@@ -56,19 +56,19 @@ export const CartPage = () => {
 
     useEffect(() => {
         let tempCartPrice = 0;
-        cart.forEach(
-            (el) => (tempCartPrice += parseInt(el.price) * el.productNumber)
+        cart?.forEach(
+            (el) => (tempCartPrice += +el.price * +el.productNumber)
         );
         setCartPrice(tempCartPrice);
 
         let tempNumberOfProd = 0;
-        cart.forEach((el) => (tempNumberOfProd += parseInt(el.productNumber)));
+        cart.forEach((el) => (tempNumberOfProd += +el.productNumber));
         setNumberOfProducts(tempNumberOfProd);
     }, [cart, deleted]);
 
     const postOrder = async () => {
         const orderItems = [];
-        cart.forEach((el) => {
+        cart?.forEach((el) => {
             for (let i = 0; i < el.productNumber; i++) {
                 orderItems.push({
                     id: el.id,
