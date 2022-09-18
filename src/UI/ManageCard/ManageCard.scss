@@ -1,0 +1,98 @@
+.managerPage {
+  //padding: 1.5rem;
+  //background-color: #fff;
+  //max-width: 16rem;
+  border-radius: 0.75rem;
+
+  .manageCard {
+    padding: 1.5rem;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &s-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    &-img {
+      filter: drop-shadow(.2rem .2rem 10px rgba(0, 0, 0, .3));
+
+      width: 100%;
+      //aspect-ratio: 3/4;
+
+      object-fit: cover;
+      object-position: center;
+      margin-bottom: 1rem;
+
+      &__container {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+
+    &-info {
+      margin-top: auto;
+
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: .5rem;
+        margin-bottom: 0.5rem;
+        min-height: 4rem;
+      }
+    }
+
+    &-name, &-price {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #000000;
+    }
+
+    &-name {
+      margin-right: 1rem;
+    }
+
+    &-description {
+      font-weight: 400;
+      font-size: 0.875rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: #666666;
+      margin-bottom: 1rem;
+    }
+
+    &-count {
+      width: 100%;
+    }
+
+    &-count input {
+      outline: none;
+      border: 1px solid rgba(0, 0, 0, .5);
+      border-radius: 0.625rem;
+      text-align: center;
+      width: 90%;
+      padding: 0.5rem;
+    }
+
+    &-button {
+      width: 100%;
+
+      &__container {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        gap: .5rem;
+      }
+    }
+
+  }
+}
