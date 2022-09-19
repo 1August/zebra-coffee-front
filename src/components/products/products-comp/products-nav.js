@@ -27,28 +27,18 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
         },
         {
             type: 6,
-            name: "Снеки",
+            name: "Лимонады",
         },
     ];
-
-    useEffect(() => {
-        const getCategories = async () => {
-            const result = await axios.get(
-                "https://zebra-hackathon.herokuapp.com/api/categories"
-            );
-            console.log(result);
-        };
-        getCategories();
-    }, []);
 
     useEffect(() => {
         const newProductsCount = {};
 
         products.forEach((el) => {
-            if (el["category_id"] in newProductsCount) {
-                newProductsCount[el["category_id"]]++;
+            if (el["categoryId"] in newProductsCount) {
+                newProductsCount[el["categoryId"]]++;
             } else {
-                newProductsCount[el["category_id"]] = 1;
+                newProductsCount[el["categoryId"]] = 1;
             }
         });
 

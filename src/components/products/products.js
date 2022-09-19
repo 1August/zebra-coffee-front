@@ -8,8 +8,7 @@ import ProductPrice from "./products-comp/product-price";
 
 import "./products-sass/products.sass";
 
-
-import temp from '../../assets/img/coffeeTemp.png'
+import temp from "../../assets/img/coffeeTemp.png";
 
 const Products = () => {
     /**
@@ -51,7 +50,7 @@ const Products = () => {
             const result = await axios.get(
                 "https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15"
             );
-            // console.log(result.data.results)
+
             setProducts(result.data.results);
         };
         getProducts();
@@ -60,6 +59,7 @@ const Products = () => {
     useEffect(() => {
         if (products) {
             // console.log(products)
+
             const tempMax = products.reduce(
                 (max, el) => (+el.price > +max ? +el.price : max),
                 0

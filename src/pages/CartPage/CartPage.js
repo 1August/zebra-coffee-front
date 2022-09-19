@@ -28,13 +28,13 @@ export const CartPage = () => {
 
     const [userLocation, setUserLocation] = useState("");
 
+    const [order, setOrder] = useState(null);
+
     const { location, id } = decodeToken(
         JSON.parse(localStorage.getItem("user")).token
     );
 
     let filteredStores = null;
-
-    console.log(stores);
 
     if (stores) {
         filteredStores = stores?.filter((el) => {
@@ -58,6 +58,7 @@ export const CartPage = () => {
 
     useEffect(() => {
         let tempCartPrice = 0;
+
         cart?.forEach((el) => (tempCartPrice += +el.price * +el.productNumber));
         setCartPrice(tempCartPrice);
 
@@ -77,13 +78,7 @@ export const CartPage = () => {
             }
         });
 
-        console.log({
-            customerId: id,
-            storeId: userLocation,
-            orderItems: orderItems,
-        });
-
-        axios({
+        const result = await axios({
             method: "post",
             url: "https://zebra-hackathon.herokuapp.com/api/orders/",
             data: {
@@ -92,6 +87,10 @@ export const CartPage = () => {
                 orderItems: orderItems,
             },
         });
+
+        if (result) {
+            setOrder(result.data);
+        }
     };
 
     const login = async () => {
@@ -126,7 +125,17 @@ export const CartPage = () => {
 
     const handleClickClearCart = () => {
         localStorage.removeItem("cart");
+        window.dispatchEvent(new Event("storage"));
         setCart([]);
+    };
+
+    const handleUpdate = async () => {
+        const result = await axios.get(
+            `https://zebra-hackathon.herokuapp.com/api/orders/${order.id}`
+        );
+
+        setOrder(result.data);
+        console.log("Hello");
     };
 
     if (!filteredStores) {
@@ -135,7 +144,7 @@ export const CartPage = () => {
 
     return (
         <div className="cart-page" id="cartPage">
-            {showModal && (
+            {showModal && !payed && (
                 <CartModal
                     isModal={showModal}
                     closeModal={setShowModal}
@@ -149,21 +158,38 @@ export const CartPage = () => {
                     <h2>Ваша корзина</h2>
                     <div className="cart-page-header-container">
                         <div className="cart-page-count">
-                            У вас {numberOfProducts} товара на сумму:{" "}
-                            {cartPrice}тг
+                            Кол-во товара: {numberOfProducts}
                         </div>
-                        <button
-                            onClick={handleClickClearCart}
-                            style={{ marginRight: "1rem" }}
-                        >
-                            Очистить корзину
-                        </button>
-                        <Button
-                            // onClick={async () => await login()}
-                            onClick={() => setShowModal(true)}
-                        >
-                            Оплатить ETH
-                        </Button>
+                        <div className="cart-page-count">
+                            Сумма: {cartPrice}тг
+                        </div>
+                        {!payed ? (
+                            <>
+                                <button
+                                    onClick={handleClickClearCart}
+                                    style={{ marginRight: "1rem" }}
+                                >
+                                    Очистить корзину
+                                </button>
+                                <Button
+                                    // onClick={async () => await login()}
+                                    onClick={() => setShowModal(true)}
+                                >
+                                    Оплатить ETH
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                                <div className="cart-page-status">
+                                    Статус вашего заказа:{" "}
+                                    {order && order.order_status == 1
+                                        ? "Готовится"
+                                        : "Готов"}
+                                </div>
+
+                                <Button onClick={handleUpdate}>Обновить</Button>
+                            </>
+                        )}
                     </div>
                 </div>
 
@@ -175,6 +201,7 @@ export const CartPage = () => {
                                     el={el}
                                     deleted={deleted}
                                     setDeleted={setDeleted}
+                                    payed={payed}
                                 />
                             </div>
                         ))

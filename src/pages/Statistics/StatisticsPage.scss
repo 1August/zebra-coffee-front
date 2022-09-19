@@ -1,0 +1,60 @@
+.statisticsPage {
+  .statMain {
+    display: grid;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    //gap: 2rem;
+
+    .statLeft {
+      background-color: #fff;
+      padding: 1rem;
+    }
+
+    .statRight {
+
+      .statGraph {
+        background-color: #fff;
+
+        padding: 0 2rem;
+      }
+    }
+
+    .statCategories {
+      box-sizing: border-box;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        display: grid;
+
+        li {
+          cursor: pointer;
+          //padding: 1rem;
+          //border: 1px solid rgba(var(--main-teal-green), .3);
+
+          //border-radius: 10px;
+
+          //.activeStat{
+          //  background-color: rgba(var(--main-teal-green), .15);
+          //}
+
+          a {
+            display: flex;
+            padding: 1rem;
+            text-decoration: none;
+            color: #000;
+          }
+        }
+
+        li + li {
+          border-top: 1px solid rgba(var(--main-teal-green), .3);
+        }
+
+      }
+    }
+  }
+}
