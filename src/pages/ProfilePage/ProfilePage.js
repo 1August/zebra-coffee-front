@@ -39,18 +39,18 @@ export const ProfilePage = () => {
         role = user?.role;
     }
 
-    // useEffect(() => {
-    //     const getFranchisers = async () => {
-    //         const result = await axios.get(
-    //             "https://zebra-hackathon.herokuapp.com/api/franchisers"
-    //         );
+    useEffect(() => {
+        const getFranchisers = async () => {
+            const result = await axios.get(
+                "https://zebra-hackathon.herokuapp.com/api/franchise"
+            );
 
-    //         setAllFranchisers(result.data);
-    //     };
-    //     getFranchisers();
-    // }, []);
+            setAllFranchisers(result.data);
+        };
+        getFranchisers();
+    }, []);
 
-    // console.log(allFranchisers);
+    console.log(allFranchisers);
 
     useEffect(() => {
         const getOrders = async () => {
@@ -352,6 +352,30 @@ export const ProfilePage = () => {
                                 <h3 className="statusDate">Дата</h3>
                                 <h3 className="statusDate">Действие</h3>
                             </div>
+                            {allFranchisers.length > 0 ? (
+                                allFranchisers?.map((el, index) => (
+                                    <div className="statusItem">
+                                        <p className={"statusOrder"}>
+                                            {index + 1}
+                                        </p>
+                                        <p className={"statusOrder"}>
+                                            {el?.id}
+                                        </p>
+                                        <h3 className="statusTitle">
+                                            {el?.first_name}
+                                        </h3>
+                                        <h3 className="statusTitle">
+                                            {el?.last_name}
+                                        </h3>
+                                        <button className="statusInfo">
+                                            <MdOutlineAccountCircle />
+                                            Подробнее
+                                        </button>
+                                    </div>
+                                ))
+                            ) : (
+                                <h1>List is empty!</h1>
+                            )}
                         </div>
                     </div>
                 )}
