@@ -8,6 +8,7 @@ import {RequireAuth} from "../RequireAuth/RequireAuth";
 import {ErrorPage} from "../../pages/ErrorPage/ErrorPage";
 import {CartPage} from "../../pages/CartPage/CartPage";
 import {ManagerPage} from "../../pages/ManagerPage/ManagerPage";
+import {StatisticsPage} from "../../pages/Statistics/StatisticsPage";
 
 export const MyRoutes = () => {
     const routes = [
@@ -50,6 +51,23 @@ export const MyRoutes = () => {
         {
             path: "/products",
             component: <Products/>,
+            requireAuth: true,
+            reverse: false
+        },
+        {
+            path: "/statistics",
+            component: <StatisticsPage/>,
+            requireAuth: true,
+            reverse: false,
+            // exact: false,
+            // children: <Route
+            //     path={'/*'}
+            //     component={<StatisticsPage/>}
+            // />
+        },
+        {
+            path: "/statistics/:statId",
+            component: <StatisticsPage/>,
             requireAuth: true,
             reverse: false
         },

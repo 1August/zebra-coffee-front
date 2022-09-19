@@ -24,6 +24,10 @@ export const Header = () => {
         {
             label: "Manage",
             to: "/manage",
+        },
+        {
+            label: "Statistic",
+            to: '/statistics'
         }
     ] : [
         {

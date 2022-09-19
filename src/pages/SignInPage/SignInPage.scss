@@ -72,3 +72,64 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .signInPage {
+    position: relative;
+
+    .container {
+      isolation: isolate;
+
+      .signInContent{
+        backdrop-filter: brightness(.5);
+      }
+
+      .signInImg {
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+      }
+
+      .signInContent {
+        color: rgba(var(--main-white), 1);
+        width: 100%;
+
+        a{
+          text-decoration: none;
+          color: #FFFFFF;
+
+        }
+      }
+
+      .signInForm{
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 425px) {
+  .signInPage {
+
+    .container {
+
+      .signInContent{
+      }
+
+      .signInImg {
+      }
+
+      .signInContent {
+
+        a{
+        }
+      }
+
+      .signInForm{
+        width: 80%;
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ img {
 
 main {
     background-color: rgba(var(--main-grey), 1);
+    /*isolation: isolate;*/
 }
 
 main > * {
