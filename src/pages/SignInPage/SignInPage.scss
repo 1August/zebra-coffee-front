@@ -34,77 +34,73 @@
         max-width: unset;
         padding: 0;
 
-<<<<<<< HEAD
-        display: flex;
-        align-items: stretch;
-=======
-      background-image: url(../../assets/img/coffeBeans.jpg);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+        background-image: url(../../assets/img/coffeBeans.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .signInContent {
-      width: 50%;
+        width: 50%;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .signInForm {
-      width: 60%;
+        width: 60%;
 
-      display: grid;
-      //grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-
-      padding: 2rem;
-      box-shadow: .5rem .5rem 20px 7px rgba(0, 0, 0, .15);
-      //border: 1px solid #000;
-
-      & > * {
         display: grid;
-        align-items: center;
->>>>>>> main
-        justify-content: space-between;
+        //grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
 
-        .signInImg {
-            width: 50%;
+        padding: 2rem;
+        box-shadow: 0.5rem 0.5rem 20px 7px rgba(0, 0, 0, 0.15);
+        //border: 1px solid #000;
 
-            background-image: url(../../assets/img/coffeBeans.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .signInContent {
-            width: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .signInForm {
-            width: 60%;
-
+        & > * {
             display: grid;
-            //grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
 
-            padding: 2rem;
-            box-shadow: 0.5rem 0.5rem 20px 7px rgba(0, 0, 0, 0.15);
-            //border: 1px solid #000;
+            .signInImg {
+                width: 50%;
 
-            & > * {
-                display: grid;
+                background-image: url(../../assets/img/coffeBeans.jpg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .signInContent {
+                width: 50%;
+
+                display: flex;
                 align-items: center;
-                justify-content: space-between;
-                grid-template-columns: repeat(1, 1fr);
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .signInForm {
+                width: 60%;
+
+                display: grid;
+                //grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
+
+                padding: 2rem;
+                box-shadow: 0.5rem 0.5rem 20px 7px rgba(0, 0, 0, 0.15);
+                //border: 1px solid #000;
+
+                & > * {
+                    display: grid;
+                    align-items: center;
+                    justify-content: space-between;
+                    grid-template-columns: repeat(1, 1fr);
+                    gap: 1rem;
+                }
             }
         }
     }

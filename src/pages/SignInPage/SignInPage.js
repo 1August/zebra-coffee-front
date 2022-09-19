@@ -10,17 +10,12 @@ export const SignInPage = () => {
 
     const nav = useNavigate();
 
-<<<<<<< HEAD
     const token = useSelector((state) => state.auth.token);
-    if (token) nav("/products");
-=======
-    const token = useSelector(state => state.auth.token)
     if (token) {
         // const
         // dispatch(signIn({use}))
-        nav('/products')
+        nav("/products");
     }
->>>>>>> main
 
     const inputs = [
         {
