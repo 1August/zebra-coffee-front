@@ -10,20 +10,8 @@ export const SignInPage = () => {
 
     const nav = useNavigate();
 
-<<<<<<< HEAD
     const token = useSelector((state) => state.auth.token);
     if (token) nav("/products");
-=======
-    const token = useSelector(state => state.auth.token)
-    if (token) {
-        // const
-        // dispatch(signIn({use}))
-        nav('/products')
-    }
-<<<<<<< HEAD
-=======
->>>>>>> main
->>>>>>> Almas
 
     const inputs = [
         {
@@ -83,9 +71,9 @@ export const SignInPage = () => {
                             ))}
                         <div className="sign-in-container">
                             <NavLink to={"/signUp"}>Join us!</NavLink>
-                            <NavLink to={"/sign-up-franchise"}>
-                                Became franchise
-                            </NavLink>
+                            {/* <NavLink to={"/sign-up-franchise"}>
+                                Register franchise
+                            </NavLink> */}
                         </div>
                         <Button type="submit">Sign In</Button>
                     </form>

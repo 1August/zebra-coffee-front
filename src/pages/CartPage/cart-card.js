@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import remove from "./remove.png";
 
-const CartCard = ({ el, deleted, setDeleted }) => {
+const CartCard = ({ el, deleted, setDeleted, payed }) => {
     const { image, name, description, price, productNumber } = el;
 
     const handleDelete = () => {
@@ -20,7 +20,7 @@ const CartCard = ({ el, deleted, setDeleted }) => {
 
         if (tempCart[indexOfElement].productNumber > 1) {
             tempCart[indexOfElement].productNumber =
-                +(tempCart[indexOfElement].productNumber) - 1;
+                +tempCart[indexOfElement].productNumber - 1;
         } else {
             tempCart.splice(indexOfElement, 1);
         }
@@ -31,13 +31,18 @@ const CartCard = ({ el, deleted, setDeleted }) => {
 
     return (
         <div className="product-card">
-            <div className="product-card__delete_button" onClick={handleDelete}>
-                <img
-                    src={remove}
-                    alt=""
-                    className="product-card__delete_icon"
-                />
-            </div>
+            {!payed && (
+                <div
+                    className="product-card__delete_button"
+                    onClick={handleDelete}
+                >
+                    <img
+                        src={remove}
+                        alt=""
+                        className="product-card__delete_icon"
+                    />
+                </div>
+            )}
 
             <div className="product-card-img__container">
                 <img

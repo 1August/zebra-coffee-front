@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Route, Routes } from "react-router";
 import { MainPage } from "../../pages/MainPage/MainPage";
 import { ProfilePage } from "../../pages/ProfilePage/ProfilePage";
@@ -9,18 +8,8 @@ import { RequireAuth } from "../RequireAuth/RequireAuth";
 import { ErrorPage } from "../../pages/ErrorPage/ErrorPage";
 import { CartPage } from "../../pages/CartPage/CartPage";
 import { ManagerPage } from "../../pages/ManagerPage/ManagerPage";
-=======
-import {Route, Routes} from "react-router";
-import {MainPage} from "../../pages/MainPage/MainPage";
-import {ProfilePage} from "../../pages/ProfilePage/ProfilePage";
-import {SignUpPage} from "../../pages/SignUpPage/SignUpPage";
-import {SignInPage} from "../../pages/SignInPage/SignInPage";
-import Products from "../products/products";
-import {RequireAuth} from "../RequireAuth/RequireAuth";
-import {ErrorPage} from "../../pages/ErrorPage/ErrorPage";
-import {CartPage} from "../../pages/CartPage/CartPage";
-import {ManagerPage} from "../../pages/ManagerPage/ManagerPage";
->>>>>>> main
+import { SignUpFranchise } from "../../pages/sign-up-franchise/sign-up-franchise";
+import PayFranchise from "../../pages/payFranchise/payFranchise";
 
 export const MyRoutes = () => {
     const routes = [
@@ -49,26 +38,21 @@ export const MyRoutes = () => {
             reverse: true,
         },
         {
-<<<<<<< HEAD
             path: "/sign-up-franchise",
-            component: <SignInPage />,
+            component: <SignUpFranchise />,
             requireAuth: false,
             reverse: true,
         },
         {
-            path: "/manage",
-            component: <ManagerPage />,
-=======
-            path: "/manage",
-            component: <ManagerPage/>,
-            requireAuth: true,
-            reverse: false
+            path: "/pay-franchise/:id",
+            component: <PayFranchise />,
+            requireAuth: false,
+            reverse: false,
         },
         {
-            path: "/profile",
-            component: <ProfilePage/>,
->>>>>>> main
-            requireAuth: true,
+            path: "/manage",
+            component: <ManagerPage />,
+            requireAuth: false,
             reverse: false,
         },
         {
@@ -95,11 +79,7 @@ export const MyRoutes = () => {
         <Routes>
             {routes.length > 0 &&
                 routes.map((el) =>
-<<<<<<< HEAD
                     el.requireAuth ? (
-=======
-                    el.requireAuth ?
->>>>>>> main
                         <Route
                             key={el.path}
                             path={el.path}
@@ -108,12 +88,7 @@ export const MyRoutes = () => {
                                     {el.component}
                                 </RequireAuth>
                             }
-                        /> : <Route
-                            key={el.path}
-                            path={el.path}
-                            element={el.component}
                         />
-<<<<<<< HEAD
                     ) : (
                         <Route
                             key={el.path}
@@ -121,8 +96,6 @@ export const MyRoutes = () => {
                             element={el.component}
                         />
                     )
-=======
->>>>>>> main
                 )}
         </Routes>
     );
