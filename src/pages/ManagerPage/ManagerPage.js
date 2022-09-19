@@ -5,8 +5,21 @@ import ProductCard from "../../components/products/products-comp/product-card";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {ManageCard} from "../../UI/ManageCard/ManageCard";
+import {Button} from "../../UI/Button/Button";
+import {useDispatch, useSelector} from "react-redux";
+import {changeFunctionality, showModal} from "../../redux/modalReducer";
 
 export const ManagerPage = () => {
+    const dispatch = useDispatch()
+    const { isOpen, title = 'New product', content } = useSelector(state => state.modal)
+    const {
+        categoryId = 0,
+        name = '',
+        image = '',
+        price = '',
+        description = ''
+    } = content
+
     /**
      *       "id": 2,
      *       "name": "Лавандовый раф 360 мл",
@@ -47,13 +60,18 @@ export const ManagerPage = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-            const res = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15");
+            const res = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=40");
             setProducts(res.data.results);
             // console.log(res.data.results)
         };
         getProducts();
-    }, []);
+    }, [])
 
+
+    const handleAddNewProduct = () => {
+        dispatch(changeFunctionality({functionality: 'c'}))
+        dispatch(showModal())
+    }
     if (!products) {
         return (
             <div className="container">
@@ -62,45 +80,21 @@ export const ManagerPage = () => {
         );
     }
 
+
     return (
         <div className="managerPage" id="managerPage">
             <div className="container">
-
-                {/*<div className="managerPage-left">*/}
-                {/*    <div className="products-nav">*/}
-                {/*        <h2 className="products-nav-header">Категории</h2>*/}
-                {/*        <ul className="products-nav-list">*/}
-                {/*            /!*{productTypes.map(el => (*!/*/}
-                {/*            /!*    <li*!/*/}
-                {/*            /!*        key={el.name}*!/*/}
-                {/*            /!*        // className={`products-nav-list__el ${*!/*/}
-                {/*            /!*        //     productsFilter === el.type*!/*/}
-                {/*            /!*        //         ? "products-nav-list__el_active"*!/*/}
-                {/*            /!*        //         : ""*!/*/}
-                {/*            /!*        // }`}*!/*/}
-                {/*            /!*        // onClick={() => setProductsFilter(el.type)}*!/*/}
-                {/*            /!*    >*!/*/}
-                {/*            /!*        <div className="products-nav-list__el_name">*!/*/}
-                {/*            /!*            {el.name}*!/*/}
-                {/*            /!*        </div>*!/*/}
-                {/*            /!*        <div*!/*/}
-                {/*            /!*            className={`products-nav-list__el_count ${*!/*/}
-                {/*            /!*                productsFilter === el.type*!/*/}
-                {/*            /!*                    ? "products-nav-list__el_active"*!/*/}
-                {/*            /!*                    : ""*!/*/}
-                {/*            /!*            }`}*!/*/}
-                {/*            /!*        >*!/*/}
-                {/*            /!*            {productsCount[el.type]}*!/*/}
-                {/*            /!*        </div>*!/*/}
-                {/*            /!*    </li>*!/*/}
-                {/*            /!*))}*!/*/}
-                {/*        </ul>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
                 <div className="managerPage-right">
                     <div className="manageCards">
-                        <h2>{'Все товары'}</h2>
+                        <div>
+                            <h2>Все товары </h2>
+                            <Button
+                                onClick={handleAddNewProduct}
+                            >
+                                Добавить новый продукт
+                            </Button>
+                        </div>
+
                         <div className="manageCards-list">
                             {
                                 products?.map((el) => <ManageCard

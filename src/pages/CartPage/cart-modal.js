@@ -5,12 +5,12 @@ import { Button } from "../../UI/Button/Button";
 import remove from "./remove.png";
 
 const CartModal = ({
-    isModal,
-    closeModal,
-    filteredStores,
-    login,
-    setUserLocation,
-}) => {
+                       isModal,
+                       closeModal,
+                       filteredStores,
+                       login,
+                       setUserLocation,
+                   }) => {
     if (!isModal) return null;
 
     const options = [];

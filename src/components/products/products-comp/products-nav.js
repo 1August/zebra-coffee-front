@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+<<<<<<< HEAD
 const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
+=======
+const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
+>>>>>>> main
     const [productsCount, setProductsCount] = useState({});
 
     const productTypes = [
@@ -14,6 +18,7 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
             name: "Чай",
         },
         {
+<<<<<<< HEAD
             type: 3,
             name: "Лимонады",
         },
@@ -27,10 +32,26 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
         },
         {
             type: 6,
+=======
+            type: "lemonade",
+            name: "Лимонады",
+        },
+        {
+            type: "cocktail",
+            name: "Коктейли",
+        },
+        {
+            type: "sweet",
+            name: "Сладкое",
+        },
+        {
+            type: "snacks",
+>>>>>>> main
             name: "Снеки",
         },
     ];
 
+<<<<<<< HEAD
     useEffect(() => {
         const getCategories = async () => {
             const result = await axios.get(
@@ -41,14 +62,16 @@ const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
         getCategories();
     }, []);
 
+=======
+>>>>>>> main
     useEffect(() => {
         const newProductsCount = {};
 
         products.forEach((el) => {
-            if (el["category_id"] in newProductsCount) {
-                newProductsCount[el["category_id"]]++;
+            if (el["categoryId"] in newProductsCount) {
+                newProductsCount[el["categoryId"]]++;
             } else {
-                newProductsCount[el["category_id"]] = 1;
+                newProductsCount[el["categoryId"]] = 1;
             }
         });
 
