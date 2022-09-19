@@ -1,28 +1,31 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import { Button } from "../../../UI/Button/Button";
 
-const ProductCard = ({el, handleTempCartAdd}) => {
-    const {
-        image, name, description, price
-    } = el
+const ProductCard = ({ el, handleTempCartAdd }) => {
+    const { image, name, description, price } = el;
 
-    const [productNumber, setProductNumber] = useState(0)
+    const [productNumber, setProductNumber] = useState(0);
 
-    const handleNumberChange = e => {
-        setProductNumber(e.target.value)
-    }
+    const handleNumberChange = (e) => {
+        setProductNumber(e.target.value);
+    };
 
     const handleCartAddBtnClick = () => {
-        if (productNumber < 1) return
-        handleTempCartAdd(el, productNumber)
-        setProductNumber(0)
-    }
+        if (productNumber < 1) return;
+        handleTempCartAdd(el, productNumber);
+        setProductNumber(0);
+        window.dispatchEvent(new Event("storage"));
+    };
 
     return (
         <div className="product-card">
             <div className="product-card-img__container">
-                <img src={image} className="product-card-img" alt={'Product card'}/>
+                <img
+                    src={image}
+                    className="product-card-img"
+                    alt={"Product card"}
+                />
             </div>
 
             <div className="product-card-info">
