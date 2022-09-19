@@ -1,73 +1,104 @@
 .signUpPage {
-    //height: 100vh;
+  padding: 0;
+
+  .container {
+    height: 100%;
+    max-width: unset;
     padding: 0;
 
-    //.goHomeBtn{
-    //  position: fixed;
-    //  top: 50%;
-    //  left: 50%;
-    //  translate: -50% -50%;
-    //  z-index: 10;
-    //
-    //  padding: 1rem;
-    //
-    //  width: 2rem;
-    //  height: 2rem;
-    //
-    //  background-color: #fff;
-    //  border-radius: 100%;
-    //  border: 1px solid #000;
-    //
-    //  svg{
-    //    font-size: 2rem;
-    //    //width: 64px;
-    //  }
-    //}
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+    .signUpImg {
+      width: 50%;
+
+      background-image: url(../../assets/img/coffeBeans.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .signUpContent {
+      width: 50%;
+      padding: 2rem 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .signUpForm {
+      width: 60%;
+
+      display: grid;
+      //grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+
+      padding: 2rem;
+      box-shadow: .5rem .5rem 20px 7px rgba(0, 0, 0, .15);
+      //border: 1px solid #000;
+
+      & > * {
+        display: grid;
+        align-items: center;
+        justify-content: space-between;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .signUpPage {
+    position: relative;
 
     .container {
-        height: 100%;
-        max-width: unset;
-        padding: 0;
+      isolation: isolate;
 
-        display: flex;
-        align-items: stretch;
-        justify-content: space-between;
+      .signUpContent {
+        backdrop-filter: brightness(.5);
+      }
 
-        .signUpImg {
-            width: 50%;
+      .signUpImg {
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+      }
 
-            background-image: url(../../assets/img/coffeBeans.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+      .signUpContent {
+        color: rgba(var(--main-white), 1);
+        width: 100%;
+      }
 
-        .signUpContent {
-            width: 50%;
-            padding: 2rem 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .signUpForm {
-            width: 60%;
-
-            display: grid;
-            //grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-
-            //border: 1px solid #000;
-
-            & > * {
-                display: grid;
-                align-items: center;
-                justify-content: space-between;
-                grid-template-columns: repeat(1, 1fr);
-                gap: 1rem;
-            }
-        }
+      .signUpForm {
+        box-shadow: none;
+      }
     }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .signUpPage {
+
+    .container {
+
+      .signUpContent {
+      }
+
+      .signUpImg {
+      }
+
+      .signUpContent {
+      }
+
+      .signUpForm {
+        width: 80%;
+      }
+    }
+  }
 }
