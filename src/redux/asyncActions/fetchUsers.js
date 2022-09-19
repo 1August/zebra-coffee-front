@@ -32,6 +32,13 @@ export const signIn = payload =>
                 }
 
                 const data = decodeToken(res.data.token)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                console.log({user: data, token: res.data.token})
+=======
+>>>>>>> main
+>>>>>>> Almas
 
                 dispatch(setCredentialsAction({user: data, token: res.data.token}))
             })

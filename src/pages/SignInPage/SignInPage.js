@@ -1,66 +1,71 @@
-import './SignInPage.scss'
-import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Button} from "../../UI/Button/Button";
-import {NavLink, useNavigate} from "react-router-dom";
-import {signIn} from "../../redux/asyncActions/fetchUsers";
+import "./SignInPage.scss";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "../../UI/Button/Button";
+import { NavLink, useNavigate } from "react-router-dom";
+import { signIn } from "../../redux/asyncActions/fetchUsers";
 
 export const SignInPage = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const nav = useNavigate()
+    const nav = useNavigate();
 
+<<<<<<< HEAD
+    const token = useSelector((state) => state.auth.token);
+    if (token) nav("/products");
+=======
     const token = useSelector(state => state.auth.token)
     if (token) {
         // const
         // dispatch(signIn({use}))
         nav('/products')
     }
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Almas
 
     const inputs = [
         {
-            name: 'username',
-            id: 'username',
-            placeholder: 'Username',
-            type: 'text',
-            required: true
+            name: "username",
+            id: "username",
+            placeholder: "Username",
+            type: "text",
+            required: true,
         },
         {
-            name: 'password',
-            id: 'password',
-            placeholder: 'Password',
-            type: 'password',
-            required: true
-        }
-    ]
+            name: "password",
+            id: "password",
+            placeholder: "Password",
+            type: "password",
+            required: true,
+        },
+    ];
 
     const [info, setInfo] = useState({
-        username: '',
-        password: ''
-    })
+        username: "",
+        password: "",
+    });
 
-    const handleInputChange = e => {
-        setInfo({...info, [e.target.name]: e.target.value})
-    }
+    const handleInputChange = (e) => {
+        setInfo({ ...info, [e.target.name]: e.target.value });
+    };
 
-    const handleFormSubmit = e => {
-        e.preventDefault()
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
 
-        dispatch(signIn(info))
-    }
+        dispatch(signIn(info));
+    };
 
-    return(
+    return (
         <div className="signInPage" id="signInPage">
             <div className="container">
                 <div className="signInImg"></div>
                 <div className="signInContent">
                     <h1>Sign In</h1>
-                    <form
-                        className="signInForm"
-                        onSubmit={handleFormSubmit}
-                    >
-                        {
-                            inputs.length > 0 && inputs.map(el => (
+                    <form className="signInForm" onSubmit={handleFormSubmit}>
+                        {inputs.length > 0 &&
+                            inputs.map((el) => (
                                 <div key={el.id}>
                                     <label htmlFor={el.id}>
                                         {el.placeholder}
@@ -75,19 +80,17 @@ export const SignInPage = () => {
                                         required={el.required}
                                     />
                                 </div>
-                            ))
-                        }
-                        <NavLink to={'/signUp'}>
-                            Join us!
-                        </NavLink>
-                        <Button
-                            type="submit"
-                        >
-                            Sign In
-                        </Button>
+                            ))}
+                        <div className="sign-in-container">
+                            <NavLink to={"/signUp"}>Join us!</NavLink>
+                            <NavLink to={"/sign-up-franchise"}>
+                                Became franchise
+                            </NavLink>
+                        </div>
+                        <Button type="submit">Sign In</Button>
                     </form>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

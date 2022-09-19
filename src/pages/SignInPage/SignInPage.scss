@@ -1,41 +1,43 @@
+.sign-in-container {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
 .signInPage {
-  height: 100vh;
-  padding: 0;
-
-  //.goHomeBtn{
-  //  position: fixed;
-  //  top: 50%;
-  //  left: 50%;
-  //  translate: -50% -50%;
-  //  z-index: 10;
-  //
-  //  padding: 1rem;
-  //
-  //  width: 2rem;
-  //  height: 2rem;
-  //
-  //  background-color: #fff;
-  //  border-radius: 100%;
-  //  border: 1px solid #000;
-  //
-  //  svg{
-  //    font-size: 2rem;
-  //    //width: 64px;
-  //  }
-  //}
-
-  .container {
-    height: 100%;
-    max-width: unset;
+    height: 100vh;
     padding: 0;
 
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+    //.goHomeBtn{
+    //  position: fixed;
+    //  top: 50%;
+    //  left: 50%;
+    //  translate: -50% -50%;
+    //  z-index: 10;
+    //
+    //  padding: 1rem;
+    //
+    //  width: 2rem;
+    //  height: 2rem;
+    //
+    //  background-color: #fff;
+    //  border-radius: 100%;
+    //  border: 1px solid #000;
+    //
+    //  svg{
+    //    font-size: 2rem;
+    //    //width: 64px;
+    //  }
+    //}
 
-    .signInImg {
-      width: 50%;
+    .container {
+        height: 100%;
+        max-width: unset;
+        padding: 0;
 
+<<<<<<< HEAD
+        display: flex;
+        align-items: stretch;
+=======
       background-image: url(../../assets/img/coffeBeans.jpg);
       background-position: center;
       background-repeat: no-repeat;
@@ -65,10 +67,45 @@
       & > * {
         display: grid;
         align-items: center;
+>>>>>>> main
         justify-content: space-between;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 1rem;
-      }
+
+        .signInImg {
+            width: 50%;
+
+            background-image: url(../../assets/img/coffeBeans.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .signInContent {
+            width: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .signInForm {
+            width: 60%;
+
+            display: grid;
+            //grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+
+            padding: 2rem;
+            box-shadow: 0.5rem 0.5rem 20px 7px rgba(0, 0, 0, 0.15);
+            //border: 1px solid #000;
+
+            & > * {
+                display: grid;
+                align-items: center;
+                justify-content: space-between;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1rem;
+            }
+        }
     }
-  }
 }

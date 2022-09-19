@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 import './MainPage.scss'
 
 import temp1 from '../../assets/img/coffeBeans.jpg'
 import {AiOutlineArrowUp} from "react-icons/ai";
+=======
+// import './MainPage.css'
+>>>>>>> Almas
 
 export const MainPage = () => {
-    return(
+    return (
         <div className="mainPage" id="mainPage">
             <a href="#mainPage" className="goTopBtn">
                 <AiOutlineArrowUp/>
@@ -96,5 +100,5 @@ export const MainPage = () => {
                 </div>
             </section>
         </div>
-    )
-}
+    );
+};
