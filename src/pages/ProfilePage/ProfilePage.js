@@ -7,8 +7,6 @@ import { useState, useEffect } from "react";
 import { Input } from "../../UI/Input/Input";
 import axios from "axios";
 
-import avatar from '../../assets/img/initialPhoto.png'
-
 export const ProfilePage = () => {
     const dispatch = useDispatch();
 
@@ -132,10 +130,7 @@ export const ProfilePage = () => {
             <div className="container">
                 <div className="profileInfo">
                     <div className="profileInfo-top">
-                        {
-                            console.log(user.image)
-                        }
-                        <img src={avatar} alt="Profile image" />
+                        <img src={user.image} alt="Profile image" />
                     </div>
                     <div className="profileInfo-text">
                         <h1>{`${user?.firstName} ${user?.lastName}`}</h1>
@@ -259,7 +254,7 @@ export const ProfilePage = () => {
                                                         {allOrders[actButton] &&
                                                             allOrders[
                                                                 actButton
-                                                                ].orderItems.map(
+                                                            ].orderItems.map(
                                                                 (el, index) => (
                                                                     <div className="statusItem">
                                                                         <p
