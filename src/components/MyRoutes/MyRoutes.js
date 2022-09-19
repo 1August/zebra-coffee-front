@@ -1,62 +1,71 @@
-import {Route, Routes} from "react-router";
-import {MainPage} from "../../pages/MainPage/MainPage";
-import {ProfilePage} from "../../pages/ProfilePage/ProfilePage";
-import {SignUpPage} from "../../pages/SignUpPage/SignUpPage";
-import {SignInPage} from "../../pages/SignInPage/SignInPage";
+import { Route, Routes } from "react-router";
+import { MainPage } from "../../pages/MainPage/MainPage";
+import { ProfilePage } from "../../pages/ProfilePage/ProfilePage";
+import { SignUpPage } from "../../pages/SignUpPage/SignUpPage";
+import { SignInPage } from "../../pages/SignInPage/SignInPage";
 import Products from "../products/products";
-import {RequireAuth} from "../RequireAuth/RequireAuth";
-import {ErrorPage} from "../../pages/ErrorPage/ErrorPage";
-import {CartPage} from "../../pages/CartPage/CartPage";
-import {ManagerPage} from "../../pages/ManagerPage/ManagerPage";
-import {StatisticsPage} from "../../pages/Statistics/StatisticsPage";
+import { RequireAuth } from "../RequireAuth/RequireAuth";
+import { ErrorPage } from "../../pages/ErrorPage/ErrorPage";
+import { CartPage } from "../../pages/CartPage/CartPage";
+import { ManagerPage } from "../../pages/ManagerPage/ManagerPage";
+import { StatisticsPage } from "../../pages/Statistics/StatisticsPage";
+import PayFranchise from "../../pages/payFranchise/payFranchise";
 
 export const MyRoutes = () => {
     const routes = [
         {
             path: "/",
-            component: <MainPage/>,
+            component: <MainPage />,
             requireAuth: false,
-            reverse: false
+            reverse: false,
         },
         {
             path: "/cart",
-            component: <CartPage/>,
+            component: <CartPage />,
             requireAuth: true,
-            reverse: false
+            reverse: false,
         },
         {
             path: "/signUp",
-            component: <SignUpPage/>,
+            component: <SignUpPage />,
             requireAuth: false,
-            reverse: true
+            reverse: true,
         },
         {
             path: "/signIn",
-            component: <SignInPage/>,
+            component: <SignInPage />,
             requireAuth: false,
-            reverse: true
+            reverse: true,
         },
+        {
+            path: "/pay-franchise/:id",
+            component: <PayFranchise />,
+            requireAuth: true,
+            reverse: false,
+        },
+
         {
             path: "/manage",
-            component: <ManagerPage/>,
+            component: <ManagerPage />,
             requireAuth: true,
-            reverse: false
+            reverse: false,
         },
+
         {
             path: "/profile",
-            component: <ProfilePage/>,
+            component: <ProfilePage />,
             requireAuth: true,
-            reverse: false
+            reverse: false,
         },
         {
             path: "/products",
-            component: <Products/>,
+            component: <Products />,
             requireAuth: true,
-            reverse: false
+            reverse: false,
         },
         {
             path: "/statistics",
-            component: <StatisticsPage/>,
+            component: <StatisticsPage />,
             requireAuth: true,
             reverse: false,
             // exact: false,
@@ -67,15 +76,15 @@ export const MyRoutes = () => {
         },
         {
             path: "/statistics/:statId",
-            component: <StatisticsPage/>,
+            component: <StatisticsPage />,
             requireAuth: true,
-            reverse: false
+            reverse: false,
         },
         {
             path: "*",
-            component: <ErrorPage/>,
+            component: <ErrorPage />,
             requireAuth: false,
-            reverse: false
+            reverse: false,
         },
     ];
 
@@ -83,22 +92,24 @@ export const MyRoutes = () => {
         <Routes>
             {routes.length > 0 &&
                 routes.map((el) =>
-                    el.requireAuth ?
+                    el.requireAuth ? (
                         <Route
                             key={el.path}
                             path={el.path}
-                            element={<RequireAuth
-                                reverse={el.reverse}
-                            >
-                                {el.component}
-                            </RequireAuth>
+                            element={
+                                <RequireAuth reverse={el.reverse}>
+                                    {el.component}
+                                </RequireAuth>
                             }
-                        /> : <Route
+                        />
+                    ) : (
+                        <Route
                             key={el.path}
                             path={el.path}
                             element={el.component}
                         />
+                    )
                 )}
         </Routes>
     );
-}
+};

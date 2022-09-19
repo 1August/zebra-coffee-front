@@ -9,6 +9,7 @@ import axios from "axios";
 
 import ProfileModal from "./profile-modal";
 import { Button } from "../../UI/Button/Button";
+import FranModal from "./fran-modal";
 
 export const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -33,6 +34,8 @@ export const ProfilePage = () => {
     const [isFManage, setIsFManage] = useState(null);
 
     const [allFranchisers, setAllFranchisers] = useState(null);
+    const [showFModal, setShowFModal] = useState(null);
+    const [currentF, setCurrentF] = useState(null);
 
     let role = null;
     if (user) {
@@ -117,6 +120,8 @@ export const ProfilePage = () => {
         setActiveButtons(tempButtons);
     };
 
+    console.log(role);
+
     return (
         <div className="profilePage" id="profilePage">
             {isModal && (
@@ -124,6 +129,14 @@ export const ProfilePage = () => {
                     isModal={isModal}
                     setIsModal={setIsModal}
                     userId={user.id}
+                />
+            )}
+
+            {showFModal && (
+                <FranModal
+                    showFModal={showFModal}
+                    setShowFModal={setShowFModal}
+                    f={allFranchisers[currentF]}
                 />
             )}
 
@@ -138,21 +151,21 @@ export const ProfilePage = () => {
                         <h3>{user?.phone}</h3>
                         <p>{user?.location.country}</p>
                         {/* Admin */}
-                        {/* {role === "Franchiser" ? ( */}
-                        <Button
-                            style={{ width: "100%" }}
-                            onClick={() => setIsFManage(true)}
-                        >
-                            Manage franchisers
-                        </Button>
-                        {/* ) : ( */}
-                        {/* <Button
-                            style={{ width: "100%" }}
-                            onClick={() => setIsModal(true)}
-                        >
-                            Become franchiser
-                        </Button> */}
-                        {/* )} */}
+                        {role === "Admin" ? (
+                            <Button
+                                style={{ width: "100%" }}
+                                onClick={() => setIsFManage(true)}
+                            >
+                                Manage franchisers
+                            </Button>
+                        ) : (
+                            <Button
+                                style={{ width: "100%" }}
+                                onClick={() => setIsModal(true)}
+                            >
+                                Become franchiser
+                            </Button>
+                        )}
                         <p>
                             <NavLink
                                 to={"/signOut"}
@@ -367,7 +380,13 @@ export const ProfilePage = () => {
                                         <h3 className="statusTitle">
                                             {el?.last_name}
                                         </h3>
-                                        <button className="statusInfo">
+                                        <button
+                                            className="statusInfo"
+                                            onClick={() => {
+                                                setShowFModal(true);
+                                                setCurrentF(index);
+                                            }}
+                                        >
                                             <MdOutlineAccountCircle />
                                             Подробнее
                                         </button>
