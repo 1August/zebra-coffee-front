@@ -7,47 +7,7 @@
         & > * {
             padding: 2rem;
 
-<<<<<<< HEAD
             background-color: rgba(var(--main-white), 1);
-=======
-      background-color: rgba(var(--main-white), 1);
-    }
-  }
-
-  .profileInfo{
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-
-    &-top{
-      img{
-        border-radius: 100%;
-        object-fit: cover;
-        object-position: center;
-        aspect-ratio: 1;
-      }
-    }
-  }
-
-  .profileStatus{
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-  }
-
-  .allStatuses{
-    grid-column: 2 / 3;
-    grid-row: 1 / 3;
-
-    .statusesHeader{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 5rem;
-
-      .statusesSearch{
-        flex-grow: 1;
-        input{
-          width: 100%;
->>>>>>> main
         }
     }
 
@@ -91,7 +51,7 @@
         .statusesList {
             padding-block: 1rem;
             padding-right: 1rem;
-            max-height: 80vh;
+            max-height: 60vh;
             overflow-y: scroll;
         }
 

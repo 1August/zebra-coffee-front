@@ -1,11 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-<<<<<<< HEAD
 const ProductsNav = ({ products, productsFilter, setProductsFilter }) => {
-=======
-const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
->>>>>>> main
     const [productsCount, setProductsCount] = useState({});
 
     const productTypes = [
@@ -18,7 +14,6 @@ const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
             name: "Чай",
         },
         {
-<<<<<<< HEAD
             type: 3,
             name: "Лимонады",
         },
@@ -32,38 +27,10 @@ const ProductsNav = ({products, productsFilter, setProductsFilter}) => {
         },
         {
             type: 6,
-=======
-            type: "lemonade",
             name: "Лимонады",
-        },
-        {
-            type: "cocktail",
-            name: "Коктейли",
-        },
-        {
-            type: "sweet",
-            name: "Сладкое",
-        },
-        {
-            type: "snacks",
->>>>>>> main
-            name: "Снеки",
         },
     ];
 
-<<<<<<< HEAD
-    useEffect(() => {
-        const getCategories = async () => {
-            const result = await axios.get(
-                "https://zebra-hackathon.herokuapp.com/api/categories"
-            );
-            console.log(result);
-        };
-        getCategories();
-    }, []);
-
-=======
->>>>>>> main
     useEffect(() => {
         const newProductsCount = {};
 
