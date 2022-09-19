@@ -10,6 +10,7 @@ import "./products-sass/products.sass";
 
 
 import temp from '../../assets/img/coffeeTemp.png'
+import {Loader} from "../../UI/Loader/Loader";
 
 const Products = () => {
     /**
@@ -48,13 +49,9 @@ const Products = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-<<<<<<< HEAD
             const result = await axios.get(
                 "https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15"
             );
-=======
-            const result = await axios.get("https://zebra-hackathon.herokuapp.com/api/products?page=1&limit=15");
->>>>>>> main
             // console.log(result.data.results)
             setProducts(result.data.results);
         };
@@ -64,14 +61,11 @@ const Products = () => {
     useEffect(() => {
         if (products) {
             // console.log(products)
-<<<<<<< HEAD
-            const tempMax = products.reduce(
-                (max, el) => (+el.price > +max ? +el.price : max),
-                0
-            );
-=======
+            // const tempMax = products.reduce(
+            //     (max, el) => (+el.price > +max ? +el.price : max),
+            //     0
+            // );
             const tempMax = products.reduce((max, el) => (+el.price > +max ? +el.price : max), 0)
->>>>>>> main
             setMaxPrice(tempMax);
             setPrice({ ...price, right: tempMax });
         }
@@ -79,9 +73,7 @@ const Products = () => {
 
     if (!products) {
         return (
-            <div className="container">
-                <h1>Loading</h1>
-            </div>
+            <Loader/>
         );
     }
 

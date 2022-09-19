@@ -17,11 +17,11 @@ export const getStatData = payload =>
         let data
         if (payload === 'stat1') {
             data = [
-                {x: 1, y: 2},
-                {x: 2, y: 3},
-                {x: 3, y: 5},
-                {x: 4, y: 5},
-                {x: 5, y: 7}
+                {x: 1, y: 2241},
+                {x: 2, y: 3421},
+                {x: 3, y: 5436},
+                {x: 4, y: 5235},
+                {x: 5, y: 7012}
             ]
         } else if (payload === 'stat2') {
             data = [

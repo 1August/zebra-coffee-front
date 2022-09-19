@@ -6,6 +6,7 @@ import remove from "./remove.png";
 
 import "./profile-modal.sass";
 import axios from "axios";
+import {Loader} from "../../UI/Loader/Loader";
 
 const ProfileModal = ({ isModal, setIsModal, userId }) => {
     const [locations, setLocations] = useState(null);
@@ -47,7 +48,7 @@ const ProfileModal = ({ isModal, setIsModal, userId }) => {
     };
 
     if (!locations) {
-        return <div className="">Loading...</div>;
+        return <Loader/>
     }
 
     return ReactDOM.createPortal(

@@ -10,6 +10,9 @@ import axios from "axios";
 import ProfileModal from "./profile-modal";
 import { Button } from "../../UI/Button/Button";
 
+import temp from '../../assets/img/initialPhoto.png'
+import {Loader} from "../../UI/Loader/Loader";
+
 export const ProfilePage = () => {
     const dispatch = useDispatch();
 
@@ -97,16 +100,8 @@ export const ProfilePage = () => {
         }
     }, [orders]);
 
-    if (!orders) {
-        return <div className="loading">Loading</div>;
-    }
-
-    if (!activeButtons) {
-        return <div className="loading">Loading</div>;
-    }
-
-    if (!allOrders) {
-        return <div className="loading">Loading</div>;
+    if (!orders || !activeButtons || !allOrders) {
+        return <Loader/>
     }
 
     const handleClick = (index) => {
@@ -130,7 +125,7 @@ export const ProfilePage = () => {
             <div className="container">
                 <div className="profileInfo">
                     <div className="profileInfo-top">
-                        <img src={user.image} alt="Profile image" />
+                        <img src={user.image || temp} alt="Profile image" />
                     </div>
                     <div className="profileInfo-text">
                         <h1>{`${user?.firstName} ${user?.lastName}`}</h1>

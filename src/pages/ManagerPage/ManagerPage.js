@@ -8,6 +8,7 @@ import {ManageCard} from "../../UI/ManageCard/ManageCard";
 import {Button} from "../../UI/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {changeFunctionality, showModal} from "../../redux/modalReducer";
+import {Loader} from "../../UI/Loader/Loader";
 
 export const ManagerPage = () => {
     const dispatch = useDispatch()
@@ -74,9 +75,7 @@ export const ManagerPage = () => {
     }
     if (!products) {
         return (
-            <div className="container">
-                <h1>Loading</h1>
-            </div>
+            <Loader/>
         );
     }
 

@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 import './MainPage.scss'
 
 import temp1 from '../../assets/img/coffeBeans.jpg'
 import {AiOutlineArrowUp} from "react-icons/ai";
-=======
 // import './MainPage.css'
->>>>>>> Almas
 
 export const MainPage = () => {
     return (

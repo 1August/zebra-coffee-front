@@ -12,6 +12,7 @@ import { decodeToken } from "react-jwt";
 import CartCard from "./cart-card";
 import CartModal from "./cart-modal";
 import axios from "axios";
+import {Loader} from "../../UI/Loader/Loader";
 
 export const CartPage = () => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")));
@@ -58,13 +59,12 @@ export const CartPage = () => {
 
     useEffect(() => {
         let tempCartPrice = 0;
-<<<<<<< HEAD
         cart?.forEach((el) => (tempCartPrice += +el.price * +el.productNumber));
-=======
+
         cart?.forEach(
             (el) => (tempCartPrice += +el.price * +el.productNumber)
         );
->>>>>>> main
+
         setCartPrice(tempCartPrice);
 
         let tempNumberOfProd = 0;
@@ -144,7 +144,7 @@ export const CartPage = () => {
     };
 
     if (!filteredStores) {
-        return <div className="">loading</div>;
+        return <Loader/>
     }
 
     return (
